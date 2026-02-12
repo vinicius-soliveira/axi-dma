@@ -43,6 +43,7 @@ module dma_csr #(
   output logic                       start_pulse,
   output logic                       abort_pulse,
   output logic                       soft_rst_pulse,
+  output logic                       status_ack,
 
   output logic [ADDR_WIDTH-1:0]      src_addr,
   output logic [ADDR_WIDTH-1:0]      dst_addr,
@@ -151,6 +152,7 @@ module dma_csr #(
       start_pulse    <= 1'b0;
       abort_pulse    <= 1'b0;
       soft_rst_pulse <= 1'b0;
+      status_ack <= 1'b0;
 
       // Config regs
       src_reg       <= CSR_SRC_ADDR_RST[ADDR_WIDTH-1:0];
@@ -182,6 +184,7 @@ module dma_csr #(
       start_pulse    <= 1'b0;
       abort_pulse    <= 1'b0;
       soft_rst_pulse <= 1'b0;
+      status_ack <= 1'b0;
 
       // --------------------------
       // Latch status from FSM
@@ -280,6 +283,20 @@ module dma_csr #(
               if (w_hold_data[1]) irq_err_sticky  <= 1'b0;
             end
           end
+          
+         CSR_STATUS_OFF: begin
+  	   if (w_hold_strb[0]) begin
+             if (w_hold_data[1]) done_sticky <= 1'b0;
+             if (w_hold_data[2]) begin
+                err_sticky   <= 1'b0;
+                err_code_reg <= ERR_NONE;
+             end
+
+             if (w_hold_data[1] || w_hold_data[2]) begin
+                status_ack <= 1'b1; // pulso 1 ciclo para FSM voltar ao IDLE
+             end
+           end
+         end
 
           default: begin
           end

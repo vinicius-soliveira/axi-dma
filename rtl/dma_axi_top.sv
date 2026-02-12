@@ -157,6 +157,7 @@ module dma_axi_top #(
     .start_pulse    (start_pulse),
     .abort_pulse    (abort_pulse),
     .soft_rst_pulse (soft_rst_pulse),
+    .status_ack     (status_ack),
 
     .src_addr       (src_addr),
     .dst_addr       (dst_addr),
