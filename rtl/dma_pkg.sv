@@ -139,15 +139,15 @@ package dma_pkg;
   // FSM 
   // ============================================================
   typedef enum logic [3:0] {
-    ST_IDLE       = 4'd0,
-    ST_CHECK      = 4'd1,
-    ST_READ_ADDR  = 4'd2,
-    ST_READ_DATA  = 4'd3,
-    ST_WRITE_ADDR = 4'd4,
-    ST_WRITE_DATA = 4'd5,
-    ST_WRITE_RESP = 4'd6,
-    ST_DONE       = 4'd7,
-    ST_ERROR      = 4'd8
+    ST_IDLE         = 4'd0,
+    ST_CHECK        = 4'd1,
+    ST_READ_ADDR    = 4'd2,
+    ST_READ_DATA    = 4'd3,
+    ST_PIPE_WR_ADDR = 4'd4,
+    ST_WRITE_ADDR   = 4'd5,
+    ST_WRITE_RESP   = 4'd6,
+    ST_DONE         = 4'd7,
+    ST_ERROR        = 4'd8
   } dma_state_e;
 
   // ============================================================
@@ -230,5 +230,6 @@ package dma_pkg;
   } dma_status_t;
 
 endpackage
+
 
 
