@@ -75,8 +75,9 @@ module tb_top;
 
     .IRQ(IRQ)
   );
-
-  initial begin
+  
+    initial begin
+    ARESETn          = 0;
     axil_vif.ARESETn = 0;
     mem_vif.ARESETn  = 0;
 
@@ -91,7 +92,7 @@ module tb_top;
     axil_vif.RREADY  = 0;
 
     repeat (5) @(posedge ACLK);
-    ARESETn         = 1;
+    ARESETn          = 1;
     axil_vif.ARESETn = 1;
     mem_vif.ARESETn  = 1;
   end
@@ -100,6 +101,7 @@ module tb_top;
     uvm_config_db#(virtual axil_if)::set(null, "*", "axil_vif", axil_vif);
     uvm_config_db#(virtual axil_if)::set(null, "*", "vif", axil_vif);
     uvm_config_db#(virtual axi_mem_model)::set(null, "*", "mem_vif", mem_vif);
+    uvm_top.set_timeout(1ms, 1);
     run_test();
   end
 endmodule

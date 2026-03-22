@@ -1,30 +1,44 @@
 class dma_cov_collector extends uvm_component;
   `uvm_component_utils(dma_cov_collector)
 
-  uvm_analysis_imp #(axil_seq_item, dma_cov_collector) imp;
-
-  bit [31:0] len_bytes;
-  bit [7:0]  max_beats;
-  bit        done_seen;
-  bit        err_seen;
+  uvm_analysis_imp #(dma_cov_item, dma_cov_collector) imp;
+  dma_cov_item item;
 
   covergroup dma_cg;
     option.per_instance = 1;
-    cp_len: coverpoint len_bytes {
-      bins short_t  = {[4:16]};
-      bins medium_t = {[20:64]};
-      bins long_t   = {[68:256]};
+
+    cp_len : coverpoint item.len_bytes {
+      bins len_small = {[4:16]};
+      bins len_mid   = {[20:64]};
+      bins len_large = {[68:256]};
     }
-    cp_beats: coverpoint max_beats {
-      bins b1  = {1};
-      bins b2  = {2};
-      bins b4  = {4};
-      bins b8  = {8};
-      bins b16 = {16};
+
+    cp_max_beats : coverpoint item.max_beats {
+      bins beats_1  = {1};
+      bins beats_2  = {2};
+      bins beats_4  = {4};
+      bins beats_8  = {8};
+      bins beats_16 = {16};
     }
-    cp_done: coverpoint done_seen { bins yes = {1}; }
-    cp_err : coverpoint err_seen  { bins no = {0}; bins yes = {1}; }
-    x_len_beats: cross cp_len, cp_beats;
+
+    cp_num_bursts : coverpoint item.num_bursts {
+      bins burst_single = {1};
+      bins burst_few    = {[2:4]};
+      bins burst_many   = {[5:64]};
+    }
+
+    cp_outcome : coverpoint {item.is_done, item.is_error} {
+      bins outcome_done  = {2'b10};
+      bins outcome_error = {2'b01};
+    }
+
+    cp_single_multi : coverpoint item.is_single {
+      bins single_burst = {1};
+      bins multi_burst  = {0};
+    }
+
+    cross_len_x_beats      : cross cp_len, cp_max_beats;
+    cross_single_x_outcome : cross cp_single_multi, cp_outcome;
   endgroup
 
   function new(string name = "dma_cov_collector", uvm_component parent = null);
@@ -33,17 +47,17 @@ class dma_cov_collector extends uvm_component;
     dma_cg = new();
   endfunction
 
-  function void write(axil_seq_item tr);
-    if (tr.is_write) begin
-      case (tr.addr[7:0])
-        dma_pkg::CSR_LEN_BYTES_OFF:  len_bytes = tr.data;
-        dma_pkg::CSR_BURST_CFG_OFF:  max_beats = tr.data[7:0];
-        default: ;
-      endcase
-    end else if (tr.addr[7:0] == dma_pkg::CSR_STATUS_OFF) begin
-      done_seen = tr.rdata[1];
-      err_seen  = tr.rdata[2];
-      if (done_seen || err_seen) dma_cg.sample();
-    end
+  function void write(dma_cov_item t);
+    item = t;
+    dma_cg.sample();
+
+    `uvm_info(
+      "COV",
+      $sformatf("sampled len=%0d max_beats=%0d num_bursts=%0d done=%0b error=%0b single=%0b",
+                item.len_bytes, item.max_beats, item.num_bursts,
+                item.is_done, item.is_error, item.is_single),
+      UVM_HIGH
+    )
   endfunction
+
 endclass

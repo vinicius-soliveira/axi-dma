@@ -16,44 +16,63 @@ class axil_monitor extends uvm_component;
   endfunction
 
   task run_phase(uvm_phase phase);
-    fork
-      monitor_writes();
-      monitor_reads();
-    join
-  endtask
+    axil_seq_item wr_tr, rd_tr;
+    bit have_aw, have_w;
 
-  task monitor_writes();
-    axil_seq_item tr;
     bit [31:0] awaddr_q;
     bit [31:0] wdata_q;
-    forever begin
-      do @(vif.mon_cb); while (!(vif.mon_cb.AWVALID && vif.mon_cb.AWREADY));
-      awaddr_q = vif.mon_cb.AWADDR;
-      do @(vif.mon_cb); while (!(vif.mon_cb.WVALID && vif.mon_cb.WREADY));
-      wdata_q = vif.mon_cb.WDATA;
-      do @(vif.mon_cb); while (!(vif.mon_cb.BVALID && vif.mon_cb.BREADY));
-      tr = axil_seq_item::type_id::create("wr_tr");
-      tr.is_write = 1;
-      tr.addr     = awaddr_q;
-      tr.data     = wdata_q;
-      tr.resp     = vif.mon_cb.BRESP;
-      ap.write(tr);
-    end
-  endtask
+    bit [3:0]  wstrb_q;
 
-  task monitor_reads();
-    axil_seq_item tr;
-    bit [31:0] araddr_q;
+    have_aw = 0;
+    have_w  = 0;
+
     forever begin
-      do @(vif.mon_cb); while (!(vif.mon_cb.ARVALID && vif.mon_cb.ARREADY));
-      araddr_q = vif.mon_cb.ARADDR;
-      do @(vif.mon_cb); while (!(vif.mon_cb.RVALID && vif.mon_cb.RREADY));
-      tr = axil_seq_item::type_id::create("rd_tr");
-      tr.is_write = 0;
-      tr.addr     = araddr_q;
-      tr.rdata    = vif.mon_cb.RDATA;
-      tr.resp     = vif.mon_cb.RRESP;
-      ap.write(tr);
+      @(vif.mon_cb);
+
+      if (!vif.ARESETn) begin
+        have_aw = 0;
+        have_w  = 0;
+        continue;
+      end
+
+      // Capture AW
+      if (vif.mon_cb.AWVALID && vif.mon_cb.AWREADY) begin
+        awaddr_q = vif.mon_cb.AWADDR;
+        have_aw  = 1;
+      end
+
+      // Capture W
+      if (vif.mon_cb.WVALID && vif.mon_cb.WREADY) begin
+        wdata_q = vif.mon_cb.WDATA;
+        wstrb_q = vif.mon_cb.WSTRB;
+        have_w  = 1;
+      end
+
+      // Publish write only after response, with matched AW+W
+      if (have_aw && have_w && vif.mon_cb.BVALID && vif.mon_cb.BREADY) begin
+        wr_tr = axil_seq_item::type_id::create("wr_tr");
+        wr_tr.is_write = 1;
+        wr_tr.addr     = awaddr_q;
+        wr_tr.data     = wdata_q;
+        wr_tr.resp     = vif.mon_cb.BRESP;
+        ap.write(wr_tr);
+
+        have_aw = 0;
+        have_w  = 0;
+      end
+
+      // Read path
+      if (vif.mon_cb.ARVALID && vif.mon_cb.ARREADY) begin
+        rd_tr = axil_seq_item::type_id::create("rd_tr");
+        rd_tr.is_write = 0;
+        rd_tr.addr     = vif.mon_cb.ARADDR;
+
+        do @(vif.mon_cb); while (!(vif.mon_cb.RVALID && vif.mon_cb.RREADY));
+
+        rd_tr.rdata = vif.mon_cb.RDATA;
+        rd_tr.resp  = vif.mon_cb.RRESP;
+        ap.write(rd_tr);
+      end
     end
   endtask
 endclass

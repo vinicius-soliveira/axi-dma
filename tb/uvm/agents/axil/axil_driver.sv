@@ -27,75 +27,98 @@ class axil_driver extends uvm_driver #(axil_seq_item);
 
   task run_phase(uvm_phase phase);
     axil_seq_item tr;
+
     reset_signals();
+    wait_reset_release();
+
+    `uvm_info("AXIL_DRV", "run_phase started", UVM_LOW)
+
     forever begin
       seq_item_port.get_next_item(tr);
+      `uvm_info("AXIL_DRV",
+                $sformatf("got item is_write=%0b addr=%08h data=%08h",
+                          tr.is_write, tr.addr, tr.data),
+                UVM_LOW)
+
       if (tr.is_write) drive_write(tr);
       else             drive_read(tr);
+
       seq_item_port.item_done();
-    end
-  endtask
-
+  end
+endtask
+    
+  task wait_reset_release();
+  	do @(vif.drv_cb); while (vif.ARESETn !== 1'b0);
+  	do @(vif.drv_cb); while (vif.ARESETn !== 1'b1);
+  	@(vif.drv_cb);
+  endtask 
+    
   task drive_write(ref axil_seq_item tr);
-    bit aw_done, w_done;
-    aw_done = 0;
-    w_done  = 0;
+  bit aw_done, w_done;
 
-    @(negedge vif.ACLK);
-    vif.drv_cb.AWADDR  <= tr.addr;
-    vif.drv_cb.AWVALID <= 1;
-    vif.drv_cb.WDATA   <= tr.data;
-    vif.drv_cb.WSTRB   <= '1;
-    vif.drv_cb.WVALID  <= 1;
-    vif.drv_cb.BREADY  <= 0;
+  aw_done = 0;
+  w_done  = 0;
 
-    fork
-      begin
-        while (!aw_done) begin
-          @(vif.drv_cb);
-          if (vif.drv_cb.AWVALID && vif.drv_cb.AWREADY) begin
-            aw_done = 1;
-            @(negedge vif.ACLK);
-            vif.drv_cb.AWVALID <= 0;
-          end
-        end
-      end
-      begin
-        while (!w_done) begin
-          @(vif.drv_cb);
-          if (vif.drv_cb.WVALID && vif.drv_cb.WREADY) begin
-            w_done = 1;
-            @(negedge vif.ACLK);
-            vif.drv_cb.WVALID <= 0;
-          end
-        end
-      end
-    join
+  // Apresenta endereço e dados
+  @(vif.drv_cb);
+  vif.drv_cb.AWADDR  <= tr.addr;
+  vif.drv_cb.AWVALID <= 1'b1;
+  vif.drv_cb.WDATA   <= tr.data;
+  vif.drv_cb.WSTRB   <= '1;
+  vif.drv_cb.WVALID  <= 1'b1;
+  vif.drv_cb.BREADY  <= 1'b0;
 
-    @(negedge vif.ACLK);
-    vif.drv_cb.BREADY <= 1;
-    do @(vif.drv_cb); while (!(vif.drv_cb.BVALID && vif.drv_cb.BREADY));
-    tr.resp = vif.drv_cb.BRESP;
-    @(negedge vif.ACLK);
-    vif.drv_cb.BREADY <= 0;
-  endtask
+  // Espera os dois handshakes independentemente
+  while (!(aw_done && w_done)) begin
+    @(vif.mon_cb);
+
+    if (!aw_done && vif.mon_cb.AWREADY) begin
+      aw_done = 1;
+      vif.drv_cb.AWVALID <= 1'b0;
+      `uvm_info("AXIL_DRV", $sformatf("AW handshake addr=%08h", tr.addr), UVM_HIGH)
+    end
+
+    if (!w_done && vif.mon_cb.WREADY) begin
+      w_done = 1;
+      vif.drv_cb.WVALID <= 1'b0;
+      `uvm_info("AXIL_DRV", $sformatf("W handshake data=%08h", tr.data), UVM_HIGH)
+    end
+  end
+
+  // Espera resposta
+  @(vif.drv_cb);
+  vif.drv_cb.BREADY <= 1'b1;
+
+  do @(vif.mon_cb); while (!vif.mon_cb.BVALID);
+
+  tr.resp = vif.mon_cb.BRESP;
+  `uvm_info("AXIL_DRV", $sformatf("B handshake resp=%0d", tr.resp), UVM_HIGH)
+
+  @(vif.drv_cb);
+  vif.drv_cb.BREADY <= 1'b0;
+endtask
 
   task drive_read(ref axil_seq_item tr);
-    @(negedge vif.ACLK);
-    vif.drv_cb.ARADDR  <= tr.addr;
-    vif.drv_cb.ARVALID <= 1;
-    vif.drv_cb.RREADY  <= 0;
+  @(vif.drv_cb);
+  vif.drv_cb.ARADDR  <= tr.addr;
+  vif.drv_cb.ARVALID <= 1'b1;
+  vif.drv_cb.RREADY  <= 1'b0;
 
-    do @(vif.drv_cb); while (!(vif.drv_cb.ARVALID && vif.drv_cb.ARREADY));
-    @(negedge vif.ACLK);
-    vif.drv_cb.ARVALID <= 0;
+  do @(vif.mon_cb); while (!vif.mon_cb.ARREADY);
 
-    @(negedge vif.ACLK);
-    vif.drv_cb.RREADY <= 1;
-    do @(vif.drv_cb); while (!(vif.drv_cb.RVALID && vif.drv_cb.RREADY));
-    tr.rdata = vif.drv_cb.RDATA;
-    tr.resp  = vif.drv_cb.RRESP;
-    @(negedge vif.ACLK);
-    vif.drv_cb.RREADY <= 0;
-  endtask
+  vif.drv_cb.ARVALID <= 1'b0;
+  `uvm_info("AXIL_DRV", $sformatf("AR handshake addr=%08h", tr.addr), UVM_HIGH)
+
+  @(vif.drv_cb);
+  vif.drv_cb.RREADY <= 1'b1;
+
+  do @(vif.mon_cb); while (!vif.mon_cb.RVALID);
+
+  tr.rdata = vif.mon_cb.RDATA;
+  tr.resp  = vif.mon_cb.RRESP;
+  `uvm_info("AXIL_DRV", $sformatf("R handshake data=%08h resp=%0d", tr.rdata, tr.resp), UVM_HIGH)
+
+  @(vif.drv_cb);
+  vif.drv_cb.RREADY <= 1'b0;
+ endtask
 endclass

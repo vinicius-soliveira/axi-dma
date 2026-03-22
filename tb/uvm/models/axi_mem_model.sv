@@ -3,6 +3,7 @@ interface axi_mem_model #(
   parameter int DATA_W = 32,
   parameter int STRB_W = DATA_W/8
 ) (input logic ACLK);
+
   logic ARESETn;
 
   logic [ADDR_W-1:0] ARADDR;
@@ -48,7 +49,10 @@ interface axi_mem_model #(
     return {mem[addr+3], mem[addr+2], mem[addr+1], mem[addr+0]};
   endfunction
 
-  task automatic write_word(input logic [ADDR_W-1:0] addr, input logic [31:0] data);
+  task automatic write_word(
+    input logic [ADDR_W-1:0] addr,
+    input logic [31:0]       data
+  );
     mem[addr+0] = data[7:0];
     mem[addr+1] = data[15:8];
     mem[addr+2] = data[23:16];
@@ -66,17 +70,18 @@ interface axi_mem_model #(
   endtask
 
   function automatic bit check_copy(
-    input logic [ADDR_W-1:0] src,
-    input logic [ADDR_W-1:0] dst,
-    input int unsigned       n_words,
-    output int unsigned      bad_idx,
-    output logic [31:0]      exp,
-    output logic [31:0]      got
+    input  logic [ADDR_W-1:0] src,
+    input  logic [ADDR_W-1:0] dst,
+    input  int unsigned       n_words,
+    output int unsigned       bad_idx,
+    output logic [31:0]       exp,
+    output logic [31:0]       got
   );
     check_copy = 1'b1;
     bad_idx    = '0;
     exp        = '0;
     got        = '0;
+
     for (int i = 0; i < n_words; i++) begin
       exp = read_word(src + i*4);
       got = read_word(dst + i*4);
@@ -94,10 +99,12 @@ interface axi_mem_model #(
     RRESP   = 2'b00;
     RLAST   = 0;
     RVALID  = 0;
+
     AWREADY = 0;
     WREADY  = 0;
     BRESP   = 2'b00;
     BVALID  = 0;
+
     inject_rresp_err = 0;
     inject_bresp_err = 0;
     ar_delay_cycles  = 0;
@@ -106,86 +113,121 @@ interface axi_mem_model #(
     b_delay_cycles   = 0;
   end
 
+  // ----------------------------------------
+  // READ SLAVE
+  // ----------------------------------------
   initial begin : rd_slave
-    int unsigned beats;
-    logic [ADDR_W-1:0] base;
-    logic [31:0] data_word;
-    logic last_word;
+    int unsigned      beats_total;
+    int unsigned      beat_idx;
+    logic [ADDR_W-1:0] base_addr;
+    logic [ADDR_W-1:0] curr_addr;
+    logic [DATA_W-1:0] data_word;
+    logic               last_word;
 
     forever begin
       @(negedge ACLK);
+
       if (!ARESETn) begin
         ARREADY <= 0;
-      end else begin
+        RVALID  <= 0;
+        RLAST   <= 0;
+        RDATA   <= '0;
+        RRESP   <= 2'b00;
+      end
+      else begin
         ARREADY <= 1;
         do @(posedge ACLK); while (!(ARVALID && ARREADY));
+
+        base_addr   = ARADDR;
+        beats_total = int'(ARLEN) + 1;
+
         repeat (ar_delay_cycles) @(posedge ACLK);
-        base  = ARADDR;
-        beats = int'(ARLEN) + 1;
+
         @(negedge ACLK);
         ARREADY <= 0;
 
-        while (beats > 0) begin
-          data_word = read_word(base);
-          last_word = (beats == 1);
+        for (beat_idx = 0; beat_idx < beats_total; beat_idx++) begin
+          curr_addr = base_addr + beat_idx * (DATA_W/8);
+          data_word = read_word(curr_addr);
+          last_word = (beat_idx == beats_total - 1);
+
           repeat (r_delay_cycles) @(posedge ACLK);
+
           @(negedge ACLK);
           RVALID <= 1;
           RDATA  <= data_word;
           RRESP  <= inject_rresp_err ? 2'b10 : 2'b00;
           RLAST  <= last_word;
-          do @(posedge ACLK); while (!(RVALID && RREADY));
-          base  = base + (DATA_W/8);
-          beats = beats - 1;
-        end
 
-        @(negedge ACLK);
-        RVALID <= 0;
-        RLAST  <= 0;
-        RDATA  <= '0;
+          do @(posedge ACLK); while (!(RVALID && RREADY));
+          
+          @(negedge ACLK);
+          RVALID <= 0;
+          RLAST  <= 0;
+          RDATA  <= '0;
+          RRESP  <= 2'b00;
+        end
       end
     end
   end
 
+  // ----------------------------------------
+  // WRITE SLAVE
+  // ----------------------------------------
   initial begin : wr_slave
-    int unsigned beats;
+    int unsigned       beats;
     logic [ADDR_W-1:0] base;
 
     forever begin
       @(negedge ACLK);
+
       if (!ARESETn) begin
         AWREADY <= 0;
         WREADY  <= 0;
         BVALID  <= 0;
-      end else begin
+        BRESP   <= 2'b00;
+      end
+      else begin
         AWREADY <= 1;
         do @(posedge ACLK); while (!(AWVALID && AWREADY));
+
         repeat (aw_delay_cycles) @(posedge ACLK);
+
         base  = AWADDR;
         beats = int'(AWLEN) + 1;
+
         @(negedge ACLK);
         AWREADY <= 0;
         WREADY  <= 1;
 
         while (beats > 0) begin
           do @(posedge ACLK); while (!(WVALID && WREADY));
+
           for (int b = 0; b < STRB_W; b++) begin
-            if (WSTRB[b]) mem[base+b] = WDATA[b*8 +: 8];
+            if (WSTRB[b])
+              mem[base + b] = WDATA[b*8 +: 8];
           end
+
           base  = base + (DATA_W/8);
           beats = beats - 1;
         end
 
         @(negedge ACLK);
         WREADY <= 0;
+
         repeat (b_delay_cycles) @(posedge ACLK);
+
         @(negedge ACLK);
         BVALID <= 1;
         BRESP  <= inject_bresp_err ? 2'b10 : 2'b00;
+
         do @(posedge ACLK); while (!(BVALID && BREADY));
+
         @(negedge ACLK);
         BVALID <= 0;
+        BRESP  <= 2'b00;
       end
     end
   end
+
 endinterface
