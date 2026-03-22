@@ -1,4 +1,4 @@
-class dma_base_seq extends uvm_sequence #(uvm_sequence_item);
+class dma_base_seq extends uvm_sequence #(axil_seq_item);
   `uvm_object_utils(dma_base_seq)
   `uvm_declare_p_sequencer(dma_virtual_sequencer)
 
@@ -27,44 +27,64 @@ class dma_base_seq extends uvm_sequence #(uvm_sequence_item);
   endfunction
 
   task body();
-    axil_seq_item tr;
     bit [31:0] status;
     int watchdog;
     int unsigned bad_idx;
     logic [31:0] exp, got;
 
-    if (p_sequencer == null)
-      `uvm_fatal("NOVSQR", "dma_base_seq requires dma_virtual_sequencer")
-    if (p_sequencer.axil_sqr == null)
-      `uvm_fatal("NOAXILSQR", "axil_sqr is null")
-    if (p_sequencer.mem_vif == null)
-      `uvm_fatal("NOMEMVIF", "mem_vif is null")
+    check_handles();
 
     p_sequencer.mem_vif.fill_pattern(src_addr, len_bytes/4, seed);
 
-    do_write(dma_pkg::CSR_SRC_ADDR_OFF,  src_addr);
-    do_write(dma_pkg::CSR_DST_ADDR_OFF,  dst_addr);
-    do_write(dma_pkg::CSR_LEN_BYTES_OFF, len_bytes);
-    do_write(dma_pkg::CSR_BURST_CFG_OFF, {24'd0, max_beats});
-    do_write(dma_pkg::CSR_CTRL_OFF,      32'h0000_0003);
+    program_dma();
 
     watchdog = 0;
     forever begin
       do_read(dma_pkg::CSR_STATUS_OFF, status);
+
       if (status[2])
-        `uvm_fatal("DMAERR", $sformatf("DMA error status=%08h", status))
+        `uvm_fatal("DMAERR", $sformatf("Unexpected DMA error status=%08h", status))
+
       if (status[1]) begin
         if (!p_sequencer.mem_vif.check_copy(src_addr, dst_addr, len_bytes/4, bad_idx, exp, got)) begin
-          `uvm_fatal("COPYCHK", $sformatf("Copy mismatch idx=%0d exp=%08h got=%08h", bad_idx, exp, got))
+          `uvm_fatal("COPYCHK",
+            $sformatf("Copy mismatch idx=%0d exp=%08h got=%08h src=%08h dst=%08h len=%0d",
+                      bad_idx, exp, got, src_addr, dst_addr, len_bytes))
         end
+        `uvm_info("DMADONE",
+          $sformatf("DMA completed successfully src=%08h dst=%08h len=%0d max_beats=%0d",
+                    src_addr, dst_addr, len_bytes, max_beats),
+          UVM_LOW)
         break;
       end
+
       repeat (20) @(posedge p_sequencer.mem_vif.ACLK);
       watchdog++;
       if (watchdog > 300)
         `uvm_fatal("TIMEOUT", "Timeout waiting DMA done")
     end
 
+    clear_done();
+  endtask
+
+  task check_handles();
+    if (p_sequencer == null)
+      `uvm_fatal("NOVSQR", "dma_base_seq requires dma_virtual_sequencer")
+    if (p_sequencer.axil_sqr == null)
+      `uvm_fatal("NOAXILSQR", "axil_sqr is null")
+    if (p_sequencer.mem_vif == null)
+      `uvm_fatal("NOMEMVIF", "mem_vif is null")
+  endtask
+
+  task program_dma();
+    do_write(dma_pkg::CSR_SRC_ADDR_OFF,  src_addr);
+    do_write(dma_pkg::CSR_DST_ADDR_OFF,  dst_addr);
+    do_write(dma_pkg::CSR_LEN_BYTES_OFF, len_bytes);
+    do_write(dma_pkg::CSR_BURST_CFG_OFF, {24'd0, max_beats});
+    do_write(dma_pkg::CSR_CTRL_OFF,      32'h0000_0003);
+  endtask
+
+  task clear_done();
     do_write(dma_pkg::CSR_STATUS_OFF, 32'h0000_0002);
   endtask
 
@@ -91,6 +111,8 @@ class dma_base_seq extends uvm_sequence #(uvm_sequence_item);
   endtask
 
   task start_item_on_axil(axil_seq_item tr);
-    `uvm_do_on_with(tr, p_sequencer.axil_sqr, {})
+    tr.set_sequencer(p_sequencer.axil_sqr);
+    start_item(tr);
+    finish_item(tr);
   endtask
 endclass

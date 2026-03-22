@@ -6,15 +6,18 @@ class dma_smoke_test extends dma_base_test;
   endfunction
 
   task run_phase(uvm_phase phase);
-    dma_base_seq seq;
+    dma_smoke_seq seq;
+
     phase.raise_objection(this);
-    seq = dma_base_seq::type_id::create("seq");
-    seq.src_addr  = 32'h0001_0000;
-    seq.dst_addr  = 32'h0002_0000;
-    seq.len_bytes = 32'd32;
-    seq.max_beats = 8;
-    seq.seed      = 32'hA000_0000;
+
+    wait (env.axil_ag.drv.vif.ARESETn === 1'b1);
+    repeat (2) @(env.axil_ag.drv.vif.drv_cb);
+
+    env.mem_vif.fill_pattern(32'h0001_0000, 8, 32'hA000_0000);
+
+    seq = dma_smoke_seq::type_id::create("seq");
     seq.start(env.vsqr);
+
     phase.drop_objection(this);
   endtask
 endclass
