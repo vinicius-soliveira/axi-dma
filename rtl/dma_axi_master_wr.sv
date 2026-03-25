@@ -50,7 +50,6 @@ module dma_axi_master_wr #(
   output logic                   M_AXI_BREADY
 );
 
-  import dma_pkg::*;
 
   // ------------------------------------------------------------
   // AXI constants
@@ -118,7 +117,7 @@ module dma_axi_master_wr #(
   always_comb begin
     state_n = state;
 
-    unique case (state)
+    case (state)
       ST_IDLE: begin
         if (cmd_valid) begin
           state_n = ST_AW;
