@@ -34,7 +34,6 @@ module dma_axi_master_rd #(
   output logic                   M_AXI_RREADY
 );
 
-  import dma_pkg::*;
 
   // ------------------------------------------------------------
   // AXI constants 
@@ -90,7 +89,7 @@ module dma_axi_master_rd #(
   always_comb begin
     state_n = state;
 
-    unique case (state)
+    case (state)
       ST_IDLE: begin
         if (cmd_valid) begin
           state_n = ST_AR;

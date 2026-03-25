@@ -62,8 +62,6 @@ module dma_csr #(
   input  dma_pkg::dma_err_e          core_err_code
 );
 
-  import dma_pkg::*;
-
   localparam int unsigned STRB_W = (AXIL_DATA_WIDTH/8);
 
   // ---------------------------------------
@@ -75,7 +73,7 @@ module dma_csr #(
   logic                  irq_en_reg;
   logic                  done_sticky;
   logic                  err_sticky;
-  dma_err_e              err_code_reg;
+  dma_pkg::dma_err_e     err_code_reg;
 
   // IRQ status
   logic                  irq_done_sticky;
@@ -102,12 +100,12 @@ module dma_csr #(
   // ---------------------------------------
   // Apply WSTRB
   // ---------------------------------------
-  function automatic [AXIL_DATA_WIDTH-1:0] apply_wstrb(
+  function [AXIL_DATA_WIDTH-1:0] apply_wstrb(
     input [AXIL_DATA_WIDTH-1:0] oldv,
     input [AXIL_DATA_WIDTH-1:0] newv,
     input [STRB_W-1:0]          strb
   );
-    automatic logic [AXIL_DATA_WIDTH-1:0] tmp;
+    logic [AXIL_DATA_WIDTH-1:0] tmp;
     int i;
     begin
       tmp = oldv;
@@ -127,14 +125,15 @@ module dma_csr #(
   assign max_beats = max_beats_reg;
   assign irq_en    = irq_en_reg;
 
-  wire irq_pending = irq_done_sticky || irq_err_sticky;
+  logic irq_pending;
+  assign irq_pending = irq_done_sticky || irq_err_sticky;
   assign irq_o = irq_en_reg && irq_pending;
 
   // ---------------------------------------
   // AXI-Lite constants
   // ---------------------------------------
-  assign S_AXI_BRESP = AXI_RESP_OKAY;
-  assign S_AXI_RRESP = AXI_RESP_OKAY;
+  assign S_AXI_BRESP = dma_pkg::AXI_RESP_OKAY;
+  assign S_AXI_RRESP = dma_pkg::AXI_RESP_OKAY;
 
   assign S_AXI_AWREADY = (!aw_hold_valid) && (!bvalid_q);
   assign S_AXI_WREADY  = (!w_hold_valid)  && (!bvalid_q);
@@ -155,16 +154,16 @@ module dma_csr #(
       status_ack <= 1'b0;
 
       // Config regs
-      src_reg       <= CSR_SRC_ADDR_RST[ADDR_WIDTH-1:0];
-      dst_reg       <= CSR_DST_ADDR_RST[ADDR_WIDTH-1:0];
-      len_reg       <= CSR_LEN_BYTES_RST;
-      max_beats_reg <= CSR_BURST_CFG_RST[7:0];
-      irq_en_reg    <= IRQ_ENABLE_DEFAULT;
+      src_reg       <= dma_pkg::CSR_SRC_ADDR_RST[ADDR_WIDTH-1:0];
+      dst_reg       <= dma_pkg::CSR_DST_ADDR_RST[ADDR_WIDTH-1:0];
+      len_reg       <= dma_pkg::CSR_LEN_BYTES_RST;
+      max_beats_reg <= dma_pkg::CSR_BURST_CFG_RST[7:0];
+      irq_en_reg    <= dma_pkg::IRQ_ENABLE_DEFAULT;
 
       // Status
       done_sticky       <= 1'b0;
       err_sticky        <= 1'b0;
-      err_code_reg      <= ERR_NONE;
+      err_code_reg      <= dma_pkg::ERR_NONE;
       irq_done_sticky   <= 1'b0;
       irq_err_sticky    <= 1'b0;
 
@@ -222,7 +221,7 @@ module dma_csr #(
       if (aw_hold_valid && w_hold_valid && !bvalid_q) begin
         unique case (aw_hold_addr[7:0])
 
-          CSR_CTRL_OFF: begin
+          dma_pkg::CSR_CTRL_OFF: begin
             logic [AXIL_DATA_WIDTH-1:0] ctrl_shadow;
             logic [AXIL_DATA_WIDTH-1:0] ctrl_merged;
 
@@ -239,7 +238,7 @@ module dma_csr #(
 
                 done_sticky     <= 1'b0;
                 err_sticky      <= 1'b0;
-                err_code_reg    <= ERR_NONE;
+                err_code_reg    <= dma_pkg::ERR_NONE;
                 irq_done_sticky <= 1'b0;
                 irq_err_sticky  <= 1'b0;
 
@@ -251,25 +250,25 @@ module dma_csr #(
                   start_pulse <= 1'b1;
                   done_sticky  <= 1'b0;
                   err_sticky   <= 1'b0;
-                  err_code_reg <= ERR_NONE;
+                  err_code_reg <= dma_pkg::ERR_NONE;
                 end
               end
             end
           end
 
-          CSR_SRC_ADDR_OFF: begin
+          dma_pkg::CSR_SRC_ADDR_OFF: begin
             src_reg <= apply_wstrb(src_reg[AXIL_DATA_WIDTH-1:0], w_hold_data, w_hold_strb);
           end
 
-          CSR_DST_ADDR_OFF: begin
+          dma_pkg::CSR_DST_ADDR_OFF: begin
             dst_reg <= apply_wstrb(dst_reg[AXIL_DATA_WIDTH-1:0], w_hold_data, w_hold_strb);
           end
 
-          CSR_LEN_BYTES_OFF: begin
+          dma_pkg::CSR_LEN_BYTES_OFF: begin
             len_reg <= apply_wstrb(len_reg, w_hold_data, w_hold_strb);
           end
 
-          CSR_BURST_CFG_OFF: begin
+          dma_pkg::CSR_BURST_CFG_OFF: begin
             logic [AXIL_DATA_WIDTH-1:0] oldv, merged;
             oldv = '0;
             oldv[7:0] = max_beats_reg;
@@ -277,19 +276,19 @@ module dma_csr #(
             max_beats_reg <= merged[7:0];
           end
 
-          CSR_IRQ_STATUS_OFF: begin
+          dma_pkg::CSR_IRQ_STATUS_OFF: begin
             if (w_hold_strb[0]) begin
               if (w_hold_data[0]) irq_done_sticky <= 1'b0;
               if (w_hold_data[1]) irq_err_sticky  <= 1'b0;
             end
           end
           
-         CSR_STATUS_OFF: begin
+         dma_pkg::CSR_STATUS_OFF: begin
   	   if (w_hold_strb[0]) begin
              if (w_hold_data[1]) done_sticky <= 1'b0;
              if (w_hold_data[2]) begin
                 err_sticky   <= 1'b0;
-                err_code_reg <= ERR_NONE;
+                err_code_reg <= dma_pkg::ERR_NONE;
              end
 
              if (w_hold_data[1] || w_hold_data[2]) begin
@@ -321,43 +320,43 @@ module dma_csr #(
         ar_hold_addr <= S_AXI_ARADDR;
 
         unique case (S_AXI_ARADDR[7:0])
-          CSR_CTRL_OFF: begin
+          dma_pkg::CSR_CTRL_OFF: begin
             rdata_q <= '0;
             rdata_q[1] <= irq_en_reg; // IRQ_EN
           end
 
-          CSR_STATUS_OFF: begin
+          dma_pkg::CSR_STATUS_OFF: begin
             rdata_q <= '0;
             rdata_q[0] <= core_busy;
             rdata_q[1] <= done_sticky;
             rdata_q[2] <= err_sticky;
           end
 
-          CSR_SRC_ADDR_OFF: begin
+          dma_pkg::CSR_SRC_ADDR_OFF: begin
             rdata_q <= '0;
             rdata_q[ADDR_WIDTH-1:0] <= src_reg;
           end
 
-          CSR_DST_ADDR_OFF: begin
+          dma_pkg::CSR_DST_ADDR_OFF: begin
             rdata_q <= '0;
             rdata_q[ADDR_WIDTH-1:0] <= dst_reg;
           end
 
-          CSR_LEN_BYTES_OFF: begin
+          dma_pkg::CSR_LEN_BYTES_OFF: begin
             rdata_q <= len_reg;
           end
 
-          CSR_BURST_CFG_OFF: begin
+          dma_pkg::CSR_BURST_CFG_OFF: begin
             rdata_q <= '0;
             rdata_q[7:0] <= max_beats_reg;
           end
 
-          CSR_ERROR_CODE_OFF: begin
+          dma_pkg::CSR_ERROR_CODE_OFF: begin
             rdata_q <= '0;
             rdata_q[2:0] <= err_code_reg;
           end
 
-          CSR_IRQ_STATUS_OFF: begin
+          dma_pkg::CSR_IRQ_STATUS_OFF: begin
             rdata_q <= '0;
             rdata_q[0] <= irq_done_sticky;
             rdata_q[1] <= irq_err_sticky;

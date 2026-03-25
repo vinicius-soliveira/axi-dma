@@ -1,0 +1,68 @@
+# ============================================================
+# Yosys Synthesis Script - AXI DMA
+# Generic RTL synthesis (no technology-specific Liberty)
+# ============================================================
+
+# ------------------------------------------------------------
+# 1. Read RTL source files (SystemVerilog)
+# ------------------------------------------------------------
+read_verilog -sv rtl/dma_pkg.sv
+read_verilog -sv rtl/dma_fifo.sv
+read_verilog -sv rtl/dma_csr.sv
+read_verilog -sv rtl/dma_fsm.sv
+read_verilog -sv rtl/dma_axi_master_rd.sv
+read_verilog -sv rtl/dma_axi_master_wr.sv
+read_verilog -sv rtl/dma_axi_top.sv
+
+# ------------------------------------------------------------
+# 2. Define design hierarchy and top module
+# ------------------------------------------------------------
+hierarchy -check -top dma_axi_top
+
+# ------------------------------------------------------------
+# 3. Convert behavioral processes (always blocks) to logic
+# ------------------------------------------------------------
+proc
+
+# ------------------------------------------------------------
+# 4. Perform initial optimizations
+# ------------------------------------------------------------
+opt
+
+# ------------------------------------------------------------
+# 5. Extract and optimize finite state machines (FSM)
+# ------------------------------------------------------------
+fsm
+opt
+
+# ------------------------------------------------------------
+# 6. Handle memory structures (e.g., FIFOs)
+# ------------------------------------------------------------
+memory
+opt
+
+# ------------------------------------------------------------
+# 7. Perform generic technology mapping
+# ------------------------------------------------------------
+techmap
+opt
+
+# ------------------------------------------------------------
+# 8. Run generic logic optimization and mapping with ABC
+# ------------------------------------------------------------
+abc
+
+# ------------------------------------------------------------
+# 9. Clean up unused or redundant logic
+# ------------------------------------------------------------
+clean
+
+# ------------------------------------------------------------
+# 10. Report design statistics
+# ------------------------------------------------------------
+stat
+
+# ------------------------------------------------------------
+# 11. Write final synthesized netlist
+# ------------------------------------------------------------
+write_verilog synth/netlist/dma_axi_top_netlist.v

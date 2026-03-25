@@ -44,12 +44,12 @@ module dma_fsm #(
   output logic                             core_busy,
   output logic                             core_done_pulse,
   output logic                             core_err_pulse,
-  output logic [3:0]                       core_err_code
+  output dma_pkg::dma_err_e                core_err_code
 );
 
-  import dma_pkg::*;
 
   localparam int unsigned BYTES_PER_BEAT = DATA_WIDTH / 8;
+  localparam int unsigned FIFO_LEVEL_W   = dma_pkg::clog2_int(FIFO_DEPTH + 1);
 
   // ------------------------------------------------------------------
   // State encoding
@@ -81,12 +81,16 @@ module dma_fsm #(
   // Combinational burst update
   logic [31:0] rem_next;
   logic [8:0]  beats_next;
+  logic [31:0] burst_bytes_q;
+  logic [FIFO_LEVEL_W-1:0] burst_beats_cmp;
 
   // ------------------------------------------------------------------
   // Functions
   // ------------------------------------------------------------------
   function automatic logic [ADDR_WIDTH-1:0] addr_mask;
-    addr_mask = ADDR_WIDTH'(BYTES_PER_BEAT - 1);
+    begin
+      addr_mask = BYTES_PER_BEAT - 1;
+    end
   endfunction
 
   function automatic logic loc_aligned(input logic [ADDR_WIDTH-1:0] a);
@@ -97,17 +101,33 @@ module dma_fsm #(
     input logic [31:0] rem_b,
     input logic [7:0]  max_b
   );
-    int unsigned beats, m;
-    m     = (max_b == 8'd0) ? 256 : int'(max_b);
-    if (m > 256) m = 256;
-    beats = int'(rem_b) / BYTES_PER_BEAT;
-    if (beats > m)  beats = m;
-    if (beats == 0) beats = 1;
-    calc_beats = 9'(beats);
+    int unsigned beats;
+    int unsigned m;
+    begin
+      if (max_b == 8'd0)
+        m = 256;
+      else
+        m = max_b;
+
+      if (m > 256)
+        m = 256;
+
+      beats = rem_b / BYTES_PER_BEAT;
+
+      if (beats > m)
+        beats = m;
+
+      if (beats == 0)
+        beats = 1;
+
+      calc_beats = beats[8:0];
+    end
   endfunction
 
   function automatic logic [7:0] to_axlen(input logic [8:0] beats);
-    to_axlen = 8'(beats - 9'd1);
+    begin
+      to_axlen = beats[7:0] - 8'd1;
+    end
   endfunction
 
   // ------------------------------------------------------------------
@@ -116,7 +136,7 @@ module dma_fsm #(
   logic len_ok, align_ok, fifo_ok, cfg_ok;
 
   assign len_ok   = (len_bytes != '0) &&
-                    ((len_bytes % 32'(BYTES_PER_BEAT)) == '0);
+                    ((len_bytes % BYTES_PER_BEAT) == 0);
   assign align_ok = loc_aligned(src_addr) && loc_aligned(dst_addr);
   assign fifo_ok  = fifo_empty && !fifo_full;
   assign cfg_ok   = len_ok && align_ok && fifo_ok;
@@ -125,8 +145,10 @@ module dma_fsm #(
   // The write master needs the full burst in the FIFO before it starts,
   // otherwise it stalls mid-burst waiting for data.
   logic pipeline_wr_ready;
-  assign pipeline_wr_ready =
-      (fifo_level >= ($clog2(FIFO_DEPTH+1))'(burst_beats_q));
+  assign burst_beats_cmp   = burst_beats_q[FIFO_LEVEL_W-1:0];
+  assign pipeline_wr_ready = (fifo_level >= burst_beats_cmp);
+
+  assign burst_bytes_q = burst_beats_q * BYTES_PER_BEAT;
 
   // ------------------------------------------------------------------
   // Output assignments
@@ -146,7 +168,7 @@ module dma_fsm #(
   // Burst update (combinational)
   // ------------------------------------------------------------------
   always_comb begin
-    rem_next   = rem_bytes_q - (32'(burst_beats_q) * 32'(BYTES_PER_BEAT));
+    rem_next   = rem_bytes_q - burst_bytes_q;
     beats_next = calc_beats(rem_next, max_beats_cfg);
   end
 
@@ -158,7 +180,7 @@ module dma_fsm #(
     rd_cmd_valid = 1'b0;
     wr_cmd_valid = 1'b0;
 
-    unique case (state)
+    case (state)
 
       ST_IDLE:
         if (start_pulse) state_n = ST_CHECK;
@@ -282,27 +304,27 @@ module dma_fsm #(
 
         // Config errors
         if (state == ST_CHECK && !cfg_ok) begin
-          if      (!len_ok)   err_code_q <= 4'(ERR_LEN);
-          else if (!align_ok) err_code_q <= 4'(ERR_ALIGN);
+          if      (!len_ok)   err_code_q <= dma_pkg::ERR_LEN;
+          else if (!align_ok) err_code_q <= dma_pkg::ERR_ALIGN;
           else                err_code_q <= 4'd6; // ERR_FIFO
         end
 
         // AXI errors
         if (state == ST_READ_DATA && rd_done && rd_err)
-          err_code_q <= 4'(ERR_AXI_READ);
+          err_code_q <= dma_pkg::ERR_AXI_READ;
         if (state == ST_WRITE_RESP && wr_done && wr_err)
-          err_code_q <= 4'(ERR_AXI_WRITE);
+          err_code_q <= dma_pkg::ERR_AXI_WRITE;
 
         // Abort
         if (abort_pulse &&
             state != ST_IDLE && state != ST_DONE && state != ST_ERROR)
-          err_code_q <= 4'(ERR_ABORT);
+          err_code_q <= dma_pkg::ERR_ABORT;
 
         // Burst completion: advance pointers, compute next burst
         if (state == ST_WRITE_RESP && wr_done && !wr_err) begin
           rem_bytes_q      <= rem_next;
-          cur_src_q        <= cur_src_q + (32'(burst_beats_q) * 32'(BYTES_PER_BEAT));
-          cur_dst_q        <= cur_dst_q + (32'(burst_beats_q) * 32'(BYTES_PER_BEAT));
+          cur_src_q        <= cur_src_q + burst_bytes_q[ADDR_WIDTH-1:0];
+          cur_dst_q        <= cur_dst_q + burst_bytes_q[ADDR_WIDTH-1:0];
           burst_beats_q    <= beats_next;
           burst_len_q      <= to_axlen(beats_next);
           wr_addr_issued_q <= 1'b0; // reset for next burst
