@@ -28,19 +28,21 @@ package dma_pkg;
   // ============================================================
   // Functions
   // ============================================================
-  function automatic int unsigned clog2_int(input int unsigned v);
-    int unsigned r;
-    begin
-      r = 0;
-      if (v <= 1) return 0;
-      v = v - 1;
-      while (v > 0) begin
-        v >>= 1;
-        r++;
-      end
-      return r;
+ function automatic int unsigned clog2_int(input int unsigned v);
+  int unsigned r;
+  int unsigned x;
+  begin
+    r = 0;
+    x = (v <= 1) ? 0 : (v - 1);
+
+    while (x > 0) begin
+      x = x >> 1;
+      r = r + 1;
     end
-  endfunction
+
+    clog2_int = r;
+  end
+endfunction
 
   // AXI size
   function automatic logic [2:0] axi_size_from_data_width(input int unsigned dw);
@@ -169,22 +171,25 @@ package dma_pkg;
   endfunction
 
   // Beats per burst 
-  function automatic logic [7:0] compute_beats(
-      input logic [31:0] bytes_remaining,
-      input logic [7:0]  max_beats
-    );
-    int unsigned bytes_per_beat;
-    int unsigned beats;
-    begin
-      bytes_per_beat = (DATA_WIDTH/8);
-      beats = bytes_remaining / bytes_per_beat;
-      if (beats > max_beats) 
-      	 beats = max_beats;
-      if (beats == 0) 
-         beats = 1; 
-      return logic'(beats[7:0]);
-    end
-  endfunction
+ function automatic logic [7:0] compute_beats(
+  input logic [31:0] bytes_remaining,
+  input logic [7:0]  max_beats
+);
+  int unsigned bytes_per_beat;
+  int unsigned beats;
+  begin
+    bytes_per_beat = (DATA_WIDTH/8);
+    beats = bytes_remaining / bytes_per_beat;
+
+    if (beats > max_beats)
+      beats = max_beats;
+
+    if (beats == 0)
+      beats = 1;
+
+    compute_beats = beats[7:0];  // ✔ simples e compatível
+  end
+endfunction
 
   // ARLEN/AWLEN
   function automatic logic [7:0] axi_len_from_beats(input logic [7:0] beats);
@@ -193,19 +198,31 @@ package dma_pkg;
 
   // WSTRB
   function automatic logic [(DATA_WIDTH/8)-1:0] full_wstrb();
-    return { (DATA_WIDTH/8){1'b1} };
-  endfunction
+   begin
+    full_wstrb = ~0;
+   end
+ endfunction
 
-  function automatic int unsigned effective_max_beats(input logic [7:0] max_beats_cfg);
-    int unsigned m;
-    begin
-      m = (max_beats_cfg == 8'd0) ? AXI_MAX_BEATS : int'(max_beats_cfg);
-      if (m > AXI_MAX_BEATS) m = AXI_MAX_BEATS;
-      if (m > FIFO_DEPTH)    m = FIFO_DEPTH;
-      if (m < 1)             m = 1;
-      return m;
-    end
-  endfunction
+ function automatic int unsigned effective_max_beats(input logic [7:0] max_beats_cfg);
+  int unsigned m;
+  begin
+    if (max_beats_cfg == 8'd0)
+      m = AXI_MAX_BEATS;
+    else
+      m = max_beats_cfg;
+
+    if (m > AXI_MAX_BEATS)
+      m = AXI_MAX_BEATS;
+
+    if (m > FIFO_DEPTH)
+      m = FIFO_DEPTH;
+
+    if (m < 1)
+      m = 1;
+
+    effective_max_beats = m;
+  end
+endfunction
 
 
   // ============================================================
