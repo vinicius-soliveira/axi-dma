@@ -115,6 +115,45 @@ See `tb/README.md` for details.
 
 ---
 
+## Synthesis
+
+The design can be synthesized using **Yosys** for RTL validation and early area/timing estimation.
+
+### Requirements
+
+- Yosys (latest recommended)
+- ABC (usually bundled with Yosys)
+
+### Running synthesis
+
+```bash
+yosys -s scripts/synth.ys
+```
+
+### Synthesis flow
+
+The synthesis script performs:
+
+- RTL elaboration
+- SystemVerilog to generic netlist lowering
+- Technology mapping using ABC
+- Optimization passes
+- Optional reporting (area/cell usage)
+
+### Inputs
+
+- RTL sources under `rtl/`
+- Synthesis script: `scripts/synth.ys`
+
+### Outputs
+
+```
+synth/
+├── netlist.v
+├── reports/
+└── logs/
+```
+
 ## Author
 
 Vinícius Oliveira
