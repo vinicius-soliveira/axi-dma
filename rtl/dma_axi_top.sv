@@ -67,9 +67,9 @@ module dma_axi_top #(
   output logic                     IRQ
 );
 
-  import dma_pkg::*;
 
-  wire rst_n = ARESETn;
+  logic rst_n;
+  assign rst_n = ARESETn;
 
   // ------------------------------------------------------------------
   // CSR <-> FSM wires
@@ -154,7 +154,7 @@ module dma_axi_top #(
     .core_busy      (core_busy),
     .core_done_pulse(core_done_pulse),
     .core_err_pulse (core_err_pulse),
-    .core_err_code  (dma_pkg::dma_err_e'(core_err_code))
+    .core_err_code  (core_err_code)
   );
 
   assign IRQ = csr_irq_o;
