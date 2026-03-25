@@ -1,0 +1,71 @@
+# ============================================================
+# Yosys Synthesis Script - AXI DMA
+# Target Technology: SKY130 (sky130_fd_sc_hd)
+# Compatible with older Yosys (OpenLane container)
+# ============================================================
+
+# ------------------------------------------------------------
+# 1. Read RTL source files (SystemVerilog)
+# ------------------------------------------------------------
+read_verilog -sv rtl/dma_pkg.sv
+read_verilog -sv rtl/dma_fifo.sv
+read_verilog -sv rtl/dma_csr.sv
+read_verilog -sv rtl/dma_fsm.sv
+read_verilog -sv rtl/dma_axi_master_rd.sv
+read_verilog -sv rtl/dma_axi_master_wr.sv
+read_verilog -sv rtl/dma_axi_top.sv
+
+# ------------------------------------------------------------
+# 2. Define design hierarchy and top module
+# ------------------------------------------------------------
+hierarchy -check -top dma_axi_top
+
+# ------------------------------------------------------------
+# 3. Convert behavioral processes (always blocks)
+# ------------------------------------------------------------
+proc
+opt
+
+# ------------------------------------------------------------
+# 4. FSM extraction and optimization
+# ------------------------------------------------------------
+fsm
+opt
+
+# ------------------------------------------------------------
+# 5. Memory handling (FIFO, etc.)
+# ------------------------------------------------------------
+memory
+opt
+
+# ------------------------------------------------------------
+# 6. Generic tech mapping (important for old Yosys)
+# ------------------------------------------------------------
+techmap
+opt
+
+# ------------------------------------------------------------
+# 7. Map flip-flops to SKY130 standard cells
+# ------------------------------------------------------------
+dfflibmap -liberty /home/vinicius.silva/.ciel/ciel/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+# ------------------------------------------------------------
+# 8. Technology mapping using ABC + SKY130 Liberty
+# ------------------------------------------------------------
+abc -liberty /home/vinicius.silva/.ciel/ciel/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+# ------------------------------------------------------------
+# 9. Final cleanup and optimization
+# ------------------------------------------------------------
+clean
+opt
+
+# ------------------------------------------------------------
+# 10. Report design statistics (area / cells)
+# ------------------------------------------------------------
+stat -liberty /home/vinicius.silva/.ciel/ciel/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+# ------------------------------------------------------------
+# 11. Write final gate-level netlist
+# ------------------------------------------------------------
+write_verilog -noattr synth/netlist/dma_axi_top_netlist_sky130.v
