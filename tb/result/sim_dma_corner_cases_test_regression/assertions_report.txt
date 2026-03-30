@@ -1,0 +1,48 @@
+=======================================
+ Regression assertions report
+=======================================
+
+[Per-seed totals]
+Seed 1:
+  Total Assertions = 58,  Failing Assertions = 0,  Unchecked Assertions = 22
+
+Seed 2:
+  Total Assertions = 58,  Failing Assertions = 0,  Unchecked Assertions = 22
+
+Seed 3:
+  Total Assertions = 58,  Failing Assertions = 0,  Unchecked Assertions = 22
+
+Seed 4:
+  Total Assertions = 58,  Failing Assertions = 0,  Unchecked Assertions = 22
+
+Seed 5:
+  Total Assertions = 58,  Failing Assertions = 0,  Unchecked Assertions = 22
+
+[Consolidated sums]
+Total Assertions (sum)     = 290
+Failing Assertions (sum)   = 0
+Unchecked Assertions (sum) = 110
+
+[Detailed assertion events from logs]
+----- seed 1 -----
+  Total Assertions = 58,  Failing Assertions = 0,  Unchecked Assertions = 22
+  Assertion summary at time 12495 NS + 52
+
+----- seed 2 -----
+  Total Assertions = 58,  Failing Assertions = 0,  Unchecked Assertions = 22
+  Assertion summary at time 12495 NS + 52
+
+----- seed 3 -----
+  Total Assertions = 58,  Failing Assertions = 0,  Unchecked Assertions = 22
+  Assertion summary at time 12495 NS + 52
+
+----- seed 4 -----
+  Total Assertions = 58,  Failing Assertions = 0,  Unchecked Assertions = 22
+  Assertion summary at time 12495 NS + 52
+
+----- seed 5 -----
+  Total Assertions = 58,  Failing Assertions = 0,  Unchecked Assertions = 22
+  Assertion summary at time 12495 NS + 52
+
+
+[Conclusion] No assertion failures detected across regression

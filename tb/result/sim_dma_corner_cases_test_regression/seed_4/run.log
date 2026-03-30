@@ -1,0 +1,277 @@
+xrun(64): 25.03-s001: (c) Copyright 1995-2025 Cadence Design Systems, Inc.
+TOOL:	xrun(64)	25.03-s001: Started on Mar 22, 2026 at 10:06:27 EDT
+xrun
+	-R
+	-64bit
+	-sv
+	-uvm
+	-assert
+	-coverage all
+	-covoverwrite
+	-covworkdir sim_dma_corner_cases_test_regression/cov_work
+	-covtest dma_corner_cases_test_seed_4
+	-f filelist_eda.f
+		dma_pkg.sv
+		dma_fifo.sv
+		dma_csr.sv
+		dma_fsm.sv
+		dma_axi_master_rd.sv
+		dma_axi_master_wr.sv
+		dma_axi_top.sv
+		axil_if.sv
+		axi_mem_model.sv
+		dma_uvm_pkg.sv
+		axil_sva.sv
+		dma_ctrl_sva.sv
+		dma_axi_read_sva.sv
+		dma_axi_write_sva.sv
+		dma_binds.sv
+		tb_top.sv
+	-top tb_top
+	-access +rwc
+	-timescale 1ns/1ps
+	+UVM_TESTNAME=dma_corner_cases_test
+	+UVM_VERBOSITY=UVM_LOW
+	+ntb_random_seed=4
+	-input sim_dma_corner_cases_test_regression/xrun_post.tcl
+	-l sim_dma_corner_cases_test_regression/seed_4/run.log
+
+   User defined plus("+") options:
+	+UVM_VERBOSITY=UVM_LOW
+	+ntb_random_seed=4
+
+xrun: *W,CSSF: -TOP with -R option will be ignored.
+xrun: *W,CSSF: HDL source files with -R option will be ignored.
+Loading snapshot worklib.tb_top:sv .................... Done
+SVSEED default: 1
+xcelium> source /xcelium25.03/tools/xcelium/files/xmsimrc
+xcelium> source /xcelium25.03/tools/methodology/UVM/CDNS-1.1d/additions/sv/files/tcl/uvm_sim.tcl
+xcelium> run
+----------------------------------------------------------------
+CDNS-UVM-1.1d (25.03-s001)
+(C) 2007-2013 Mentor Graphics Corporation
+(C) 2007-2013 Cadence Design Systems, Inc.
+(C) 2006-2013 Synopsys, Inc.
+(C) 2011-2013 Cypress Semiconductor Corp.
+----------------------------------------------------------------
+
+  ***********       IMPORTANT RELEASE NOTES         ************
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_NO_DEPRECATED undefined.
+  See http://www.eda.org/svdb/view.php?id=3313 for more details.
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_OBJECT_MUST_HAVE_CONSTRUCTOR undefined.
+  See http://www.eda.org/svdb/view.php?id=3770 for more details.
+
+      (Specify +UVM_NO_RELNOTES to turn off this notice)
+
+UVM_INFO @ 0: reporter [RNTST] Running test dma_corner_cases_test...
+UVM_INFO axil_driver.sv(34) @ 55000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] run_phase started
+UVM_INFO axil_driver.sv(41) @ 55000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=1 addr=00000008 data=00100000
+UVM_INFO axil_driver.sv(41) @ 105000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=1 addr=0000000c data=00110000
+UVM_INFO axil_driver.sv(41) @ 155000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=1 addr=00000010 data=00000004
+UVM_INFO axil_driver.sv(41) @ 205000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=1 addr=00000014 data=00000001
+UVM_INFO axil_driver.sv(41) @ 255000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=1 addr=00000000 data=00000003
+UVM_INFO axil_driver.sv(41) @ 305000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 555000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO dma_cov_collector.sv(54) @ 585000: uvm_test_top.env.cov [COV] sampled coverage item: src=00100000 dst=00110000 len=4 max_beats=1 num_bursts=1 done=1 error=0 single=1
+UVM_INFO dma_scoreboard.sv(65) @ 585000: uvm_test_top.env.sb [SB] coverage publish: src=00100000 dst=00110000 len=4 max_beats=1 num_bursts=1 status=00000002 done=1 error=0
+UVM_INFO dma_scoreboard.sv(116) @ 585000: uvm_test_top.env.sb [SB] DMA copy check passed: src=00100000 dst=00110000 len=4 max_beats=1
+UVM_INFO dma_base_seq.sv(57) @ 595000: uvm_test_top.env.vsqr@@seq_min [DMADONE] DMA completed successfully src=00100000 dst=00110000 len=4 max_beats=1
+UVM_INFO axil_driver.sv(41) @ 595000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=1 addr=00000004 data=00000002
+UVM_INFO axil_driver.sv(41) @ 645000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=1 addr=00000008 data=00120000
+UVM_INFO axil_driver.sv(41) @ 695000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=1 addr=0000000c data=00130000
+UVM_INFO axil_driver.sv(41) @ 745000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=1 addr=00000010 data=00000100
+UVM_INFO axil_driver.sv(41) @ 795000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=1 addr=00000014 data=00000001
+UVM_INFO axil_driver.sv(41) @ 845000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=1 addr=00000000 data=00000003
+UVM_INFO axil_driver.sv(41) @ 895000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 1145000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 1385000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 1625000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 1865000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 2105000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 2345000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 2585000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 2825000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 3065000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 3305000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 3545000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 3785000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 4025000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 4265000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 4505000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 4745000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 4985000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 5225000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 5465000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 5705000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 5945000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 6185000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 6425000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 6665000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 6905000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 7145000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 7385000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 7625000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 7865000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 8105000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO dma_cov_collector.sv(54) @ 8135000: uvm_test_top.env.cov [COV] sampled coverage item: src=00120000 dst=00130000 len=256 max_beats=1 num_bursts=64 done=1 error=0 single=0
+UVM_INFO dma_scoreboard.sv(65) @ 8135000: uvm_test_top.env.sb [SB] coverage publish: src=00120000 dst=00130000 len=256 max_beats=1 num_bursts=64 status=00000002 done=1 error=0
+UVM_INFO dma_scoreboard.sv(116) @ 8135000: uvm_test_top.env.sb [SB] DMA copy check passed: src=00120000 dst=00130000 len=256 max_beats=1
+UVM_INFO dma_base_seq.sv(57) @ 8145000: uvm_test_top.env.vsqr@@seq_max_many [DMADONE] DMA completed successfully src=00120000 dst=00130000 len=256 max_beats=1
+UVM_INFO axil_driver.sv(41) @ 8145000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=1 addr=00000004 data=00000002
+UVM_INFO axil_driver.sv(41) @ 8195000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=1 addr=00000008 data=00140000
+UVM_INFO axil_driver.sv(41) @ 8245000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=1 addr=0000000c data=00150000
+UVM_INFO axil_driver.sv(41) @ 8295000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=1 addr=00000010 data=00000100
+UVM_INFO axil_driver.sv(41) @ 8345000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=1 addr=00000014 data=00000010
+UVM_INFO axil_driver.sv(41) @ 8395000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=1 addr=00000000 data=00000003
+UVM_INFO axil_driver.sv(41) @ 8445000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 8695000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 8935000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 9175000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 9415000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 9655000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 9895000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 10135000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 10375000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 10615000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 10855000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO dma_cov_collector.sv(54) @ 10885000: uvm_test_top.env.cov [COV] sampled coverage item: src=00140000 dst=00150000 len=256 max_beats=16 num_bursts=4 done=1 error=0 single=0
+UVM_INFO dma_scoreboard.sv(65) @ 10885000: uvm_test_top.env.sb [SB] coverage publish: src=00140000 dst=00150000 len=256 max_beats=16 num_bursts=4 status=00000002 done=1 error=0
+UVM_INFO dma_scoreboard.sv(116) @ 10885000: uvm_test_top.env.sb [SB] DMA copy check passed: src=00140000 dst=00150000 len=256 max_beats=16
+UVM_INFO dma_base_seq.sv(57) @ 10895000: uvm_test_top.env.vsqr@@seq_max_burst16 [DMADONE] DMA completed successfully src=00140000 dst=00150000 len=256 max_beats=16
+UVM_INFO axil_driver.sv(41) @ 10895000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=1 addr=00000004 data=00000002
+UVM_INFO axil_driver.sv(41) @ 10945000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=1 addr=00000008 data=00160000
+UVM_INFO axil_driver.sv(41) @ 10995000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=1 addr=0000000c data=00170000
+UVM_INFO axil_driver.sv(41) @ 11045000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=1 addr=00000010 data=00000064
+UVM_INFO axil_driver.sv(41) @ 11095000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=1 addr=00000014 data=00000008
+UVM_INFO axil_driver.sv(41) @ 11145000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=1 addr=00000000 data=00000003
+UVM_INFO axil_driver.sv(41) @ 11195000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 11445000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 11685000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 11925000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 12165000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO axil_driver.sv(41) @ 12405000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=0 addr=00000004 data=00000000
+UVM_INFO dma_cov_collector.sv(54) @ 12435000: uvm_test_top.env.cov [COV] sampled coverage item: src=00160000 dst=00170000 len=100 max_beats=8 num_bursts=4 done=1 error=0 single=0
+UVM_INFO dma_scoreboard.sv(65) @ 12435000: uvm_test_top.env.sb [SB] coverage publish: src=00160000 dst=00170000 len=100 max_beats=8 num_bursts=4 status=00000002 done=1 error=0
+UVM_INFO dma_scoreboard.sv(116) @ 12435000: uvm_test_top.env.sb [SB] DMA copy check passed: src=00160000 dst=00170000 len=100 max_beats=8
+UVM_INFO dma_base_seq.sv(57) @ 12445000: uvm_test_top.env.vsqr@@seq_partial_last [DMADONE] DMA completed successfully src=00160000 dst=00170000 len=100 max_beats=8
+UVM_INFO axil_driver.sv(41) @ 12445000: uvm_test_top.env.axil_ag.drv [AXIL_DRV] got item is_write=1 addr=00000004 data=00000002
+UVM_INFO /xcelium25.03/tools/methodology/UVM/CDNS-1.1d/sv/src/base/uvm_objection.svh(1268) @ 12495000: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+
+--- UVM Report catcher Summary ---
+
+
+Number of demoted UVM_FATAL reports  :    0
+Number of demoted UVM_ERROR reports  :    0
+Number of demoted UVM_WARNING reports:    0
+Number of caught UVM_FATAL reports   :    0
+Number of caught UVM_ERROR reports   :    0
+Number of caught UVM_WARNING reports :    0
+
+--- UVM Report Summary ---
+
+** Report counts by severity
+UVM_INFO :   93
+UVM_WARNING :    0
+UVM_ERROR :    0
+UVM_FATAL :    0
+** Report counts by id
+[AXIL_DRV]    75
+[COV]     4
+[DMADONE]     4
+[RNTST]     1
+[SB]     8
+[TEST_DONE]     1
+Simulation complete via $finish(1) at time 12495 NS + 52
+/xcelium25.03/tools/methodology/UVM/CDNS-1.1d/sv/src/base/uvm_root.svh:457     $finish;
+xcelium> assertion -summary
+xmsim: *N,PRASRT: Protected assertions are not shown.
+  Disabled Finish Failed   Assertion Name 
+         1      1      0   tb_top.dut.u_axil_sva.__cover1
+         1      1      0   tb_top.dut.u_axil_sva.__cover2
+         1      1      0   tb_top.dut.u_axil_sva.__cover3
+         1      1      0   tb_top.dut.u_axil_sva.__cover4
+         1      1      0   tb_top.dut.u_axil_sva.__cover5
+         1      0      0   tb_top.dut.u_axil_sva.p_araddr_stable
+         1      0      0   tb_top.dut.u_axil_sva.p_arvalid_hold
+         1      0      0   tb_top.dut.u_axil_sva.p_awaddr_stable
+         1      0      0   tb_top.dut.u_axil_sva.p_awvalid_hold
+         1      0      0   tb_top.dut.u_axil_sva.p_bresp_stable
+         1      0      0   tb_top.dut.u_axil_sva.p_bvalid_hold
+         1     50      0   tb_top.dut.u_axil_sva.p_rdata_stable
+         1     50      0   tb_top.dut.u_axil_sva.p_rvalid_hold
+         1      0      0   tb_top.dut.u_axil_sva.p_wdata_stable
+         1      0      0   tb_top.dut.u_axil_sva.p_wvalid_hold
+         1      1      0   tb_top.dut.u_dma_axi_read_sva.__cover1
+         1      1      0   tb_top.dut.u_dma_axi_read_sva.__cover2
+         1      1      0   tb_top.dut.u_dma_axi_read_sva.__cover3
+         1      1      0   tb_top.dut.u_dma_axi_read_sva.__cover4
+         1      0      0   tb_top.dut.u_dma_axi_read_sva.p_ar_stable
+         1      1      0   tb_top.dut.u_dma_axi_read_sva.p_araddr_aligned
+         1      1      0   tb_top.dut.u_dma_axi_read_sva.p_arburst_incr_only
+         1      1      0   tb_top.dut.u_dma_axi_read_sva.p_arsize_matches_data_width
+         1      0      0   tb_top.dut.u_dma_axi_read_sva.p_arvalid_hold
+         1      1      0   tb_top.dut.u_dma_axi_read_sva.p_last_beat_has_rlast
+         1      0      0   tb_top.dut.u_dma_axi_read_sva.p_r_stable
+         1      1      0   tb_top.dut.u_dma_axi_read_sva.p_rlast_only_on_last_beat
+         1      0      0   tb_top.dut.u_dma_axi_read_sva.p_rvalid_hold
+         1      1      0   tb_top.dut.u_dma_axi_write_sva.__cover1
+         1      1      0   tb_top.dut.u_dma_axi_write_sva.__cover2
+         1      1      0   tb_top.dut.u_dma_axi_write_sva.__cover3
+         1      1      0   tb_top.dut.u_dma_axi_write_sva.__cover4
+         1      1      0   tb_top.dut.u_dma_axi_write_sva.__cover5
+         1      0      0   tb_top.dut.u_dma_axi_write_sva.p_aw_stable
+         1      1      0   tb_top.dut.u_dma_axi_write_sva.p_awaddr_aligned
+         1      1      0   tb_top.dut.u_dma_axi_write_sva.p_awburst_incr_only
+         1      1      0   tb_top.dut.u_dma_axi_write_sva.p_awsize_matches_data_width
+         1      0      0   tb_top.dut.u_dma_axi_write_sva.p_awvalid_hold
+         1      0      0   tb_top.dut.u_dma_axi_write_sva.p_bresp_stable
+         1      0      0   tb_top.dut.u_dma_axi_write_sva.p_bvalid_hold
+         1      1      0   tb_top.dut.u_dma_axi_write_sva.p_last_beat_has_wlast
+         1      0      0   tb_top.dut.u_dma_axi_write_sva.p_w_stable
+         1      1      0   tb_top.dut.u_dma_axi_write_sva.p_wlast_only_on_last_beat
+         1      0      0   tb_top.dut.u_dma_axi_write_sva.p_wvalid_hold
+         1      1      0   tb_top.dut.u_dma_ctrl_sva.__cover1
+         1      0      0   tb_top.dut.u_dma_ctrl_sva.__cover2
+         1      1      0   tb_top.dut.u_dma_ctrl_sva.p_addr_aligned_on_start
+         1      1      0   tb_top.dut.u_dma_ctrl_sva.p_done_error_mutex
+         1      1      0   tb_top.dut.u_dma_ctrl_sva.p_done_has_activity_context
+         1      0      0   tb_top.dut.u_dma_ctrl_sva.p_error_has_activity_context
+         1      4      0   tb_top.dut.u_dma_ctrl_sva.p_finish_clears_busy
+         1      1      0   tb_top.dut.u_dma_ctrl_sva.p_len_aligned_on_start
+         1      1      0   tb_top.dut.u_dma_ctrl_sva.p_len_nonzero_on_start
+         1      4      0   tb_top.dut.u_dma_ctrl_sva.p_start_eventually_finishes
+         1      1      0   tb_top.dut.u_dma_ctrl_sva.p_start_only_when_idle
+         1      4      0   tb_top.dut.u_dma_ctrl_sva.p_start_sets_busy
+         0      0      0   worklib.uvm_pkg::uvm_reg_map::do_read.unmblk1.__assert_2
+         0      0      0   worklib.uvm_pkg::uvm_reg_map::do_write.unmblk1.__assert_1
+  Total Assertions = 58,  Failing Assertions = 0,  Unchecked Assertions = 22
+  Assertion summary at time 12495 NS + 52
+xcelium> coverage -dump cov_dump
+xmsim: *N,COVCGN: Coverage configuration file command "set_covergroup -new_instance_reporting" can be specified to improve the scoping and naming of covergroup instances. It may be noted that subsequent merging of a coverage database saved with this command and a coverage database saved without this command is not allowed.
+xmsim: *W,CGDEFN: Default name "worklib.uvm_pkg::.dma_cg" will be generated for covergroup instance "dma_cg" as the name of the covergroup instance is not specified explicitly: ./dma_cov_collector.sv, 7.
+
+coverage setup:
+  workdir  :  sim_dma_corner_cases_test_regression/cov_work
+  dutinst  :  tb_top(tb_top)
+  scope    :  scope
+  testname :  cov_dump
+
+coverage files:
+  model(design data) :  sim_dma_corner_cases_test_regression/cov_work/scope/icc_6c7dc4e1_47955bf7.ucm (reused)
+  data               :  sim_dma_corner_cases_test_regression/cov_work/scope/cov_dump/icc_6c7dc4e1_47955bf7.ucd
+xcelium> exit
+
+coverage setup:
+  workdir  :  sim_dma_corner_cases_test_regression/cov_work
+  dutinst  :  tb_top(tb_top)
+  scope    :  scope
+  testname :  dma_corner_cases_test_seed_4
+
+coverage files:
+  model(design data) :  sim_dma_corner_cases_test_regression/cov_work/scope/icc_6c7dc4e1_47955bf7.ucm (reused)
+  data               :  sim_dma_corner_cases_test_regression/cov_work/scope/dma_corner_cases_test_seed_4/icc_6c7dc4e1_47955bf7.ucd
+TOOL:	xrun(64)	25.03-s001: Exiting on Mar 22, 2026 at 10:06:28 EDT  (total: 00:00:01)

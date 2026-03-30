@@ -1,0 +1,15 @@
+=======================================
+ Assertions summary - seed 4
+=======================================
+Total Assertions    = 58
+Failing Assertions  = 0
+Unchecked Assertions= 22
+
+[Assertion summary lines from log]
+  Total Assertions = 58,  Failing Assertions = 0,  Unchecked Assertions = 22
+  Assertion summary at time 12495 NS + 52
+
+[Assertion-related messages]
+No assertion-related messages found
+
+[Conclusion] No assertion failures detected for this seed

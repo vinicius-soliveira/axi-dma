@@ -1,0 +1,16 @@
+WARNING: /home/vinicius.silva/axi_dma/gls/build/gls_wrapper.sv:6: $sdf_annotate currently only uses the first two argument.
+[TB] simulation started t=0
+VCD info: dumpfile dma_tb.vcd opened for output.
+[TB] waiting full reset sequence...
+[GLS] Applying SDF: /home/vinicius.silva/axi_dma/synth/netlist/dma_axi_top.sdf
+[TB] reset asserted t=1000
+[TB] reset deasserted t=95000
+[TB] reset released t=135000
+[TB] post-reset sample: AWREADY=x WREADY=x ARREADY=x RVALID=x BVALID=x
+
+[TB] run_case start: TC1: Single burst t=135000
+[TB] dma_start src=00010000 dst=00020000 len=32 max_beats=8 t=135000
+[TB] csr_write addr=00000008 data=00010000 t=135000
+[TB][FAIL] csr_write timeout AW/W AWREADY=x WREADY=x t=20145000
+FATAL: /home/vinicius.silva/axi_dma/tb/gls/tb_gls.sv:375: 
+       Time: 20145000  Scope: gls_top.tb.csr_write

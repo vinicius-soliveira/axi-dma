@@ -1,0 +1,10 @@
+=======================================
+ Coverage artifacts - seed 5
+=======================================
+sim_dma_corner_cases_test_regression/cov_work/scope/cov_dump/icc_6c7dc4e1_47955bf7.ucd
+sim_dma_corner_cases_test_regression/cov_work/scope/dma_corner_cases_test_seed_1/icc_6c7dc4e1_47955bf7.ucd
+sim_dma_corner_cases_test_regression/cov_work/scope/dma_corner_cases_test_seed_2/icc_6c7dc4e1_47955bf7.ucd
+sim_dma_corner_cases_test_regression/cov_work/scope/dma_corner_cases_test_seed_3/icc_6c7dc4e1_47955bf7.ucd
+sim_dma_corner_cases_test_regression/cov_work/scope/dma_corner_cases_test_seed_4/icc_6c7dc4e1_47955bf7.ucd
+sim_dma_corner_cases_test_regression/cov_work/scope/dma_corner_cases_test_seed_5/icc_6c7dc4e1_47955bf7.ucd
+sim_dma_corner_cases_test_regression/cov_work/scope/icc_6c7dc4e1_47955bf7.ucm

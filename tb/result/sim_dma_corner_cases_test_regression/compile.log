@@ -1,0 +1,193 @@
+xrun(64): 25.03-s001: (c) Copyright 1995-2025 Cadence Design Systems, Inc.
+TOOL:	xrun(64)	25.03-s001: Started on Mar 22, 2026 at 10:06:17 EDT
+xrun
+	-64bit
+	-sv
+	-uvm
+	-assert
+	-coverage all
+	-covoverwrite
+	-covworkdir sim_dma_corner_cases_test_regression/cov_work
+	-f filelist_eda.f
+		dma_pkg.sv
+		dma_fifo.sv
+		dma_csr.sv
+		dma_fsm.sv
+		dma_axi_master_rd.sv
+		dma_axi_master_wr.sv
+		dma_axi_top.sv
+		axil_if.sv
+		axi_mem_model.sv
+		dma_uvm_pkg.sv
+		axil_sva.sv
+		dma_ctrl_sva.sv
+		dma_axi_read_sva.sv
+		dma_axi_write_sva.sv
+		dma_binds.sv
+		tb_top.sv
+	-top tb_top
+	-access +rwc
+	-timescale 1ns/1ps
+	-l sim_dma_corner_cases_test_regression/compile.log
+	-elaborate
+Compiling UVM packages (uvm_pkg.sv cdns_uvm_pkg.sv) using uvmhome location /xcelium25.03/tools/methodology/UVM/CDNS-1.1d
+file: dma_pkg.sv
+	package worklib.dma_pkg:sv
+		errors: 0, warnings: 0
+file: dma_fifo.sv
+	module worklib.dma_fifo:sv
+		errors: 0, warnings: 0
+file: dma_csr.sv
+	module worklib.dma_csr:sv
+		errors: 0, warnings: 0
+file: dma_fsm.sv
+	module worklib.dma_fsm:sv
+		errors: 0, warnings: 0
+file: dma_axi_master_rd.sv
+	module worklib.dma_axi_master_rd:sv
+		errors: 0, warnings: 0
+file: dma_axi_master_wr.sv
+	module worklib.dma_axi_master_wr:sv
+		errors: 0, warnings: 0
+file: dma_axi_top.sv
+	module worklib.dma_axi_top:sv
+		errors: 0, warnings: 0
+file: axil_if.sv
+    default input #1step output #1step;
+                                     |
+xmvlog: *W,SAWSTP (axil_if.sv,24|37): Time unit "step" seen in literal - using local precision.
+    default input #1step output #1step;
+                                     |
+xmvlog: *W,SAWSTP (axil_if.sv,32|37): Time unit "step" seen in literal - using local precision.
+	interface worklib.axil_if:sv
+		errors: 0, warnings: 2
+file: axi_mem_model.sv
+	interface worklib.axi_mem_model:sv
+		errors: 0, warnings: 0
+file: dma_uvm_pkg.sv
+	package worklib.dma_uvm_pkg:sv
+		errors: 0, warnings: 0
+file: axil_sva.sv
+	module worklib.axil_sva:sv
+		errors: 0, warnings: 0
+file: dma_ctrl_sva.sv
+	module worklib.dma_ctrl_sva:sv
+		errors: 0, warnings: 0
+file: dma_axi_read_sva.sv
+	module worklib.dma_axi_read_sva:sv
+		errors: 0, warnings: 0
+file: dma_axi_write_sva.sv
+	module worklib.dma_axi_write_sva:sv
+		errors: 0, warnings: 0
+file: dma_binds.sv
+file: tb_top.sv
+	module worklib.tb_top:sv
+		errors: 0, warnings: 0
+	Elaborating the design hierarchy:
+		Caching library 'worklib' ....... Done
+	Top level design units:
+		$unit_0x4671dc3b
+		uvm_pkg
+		cdns_uvmapi
+		cdns_assert2uvm_pkg
+		cdns_uvm_pkg
+		dma_pkg
+		dma_uvm_pkg
+		tb_top
+
+	Extracting FSMs for coverage:
+		worklib.dma_csr
+		worklib.dma_fifo
+		worklib.dma_fsm
+			FSM extracted for state register state
+		worklib.dma_axi_master_rd
+			FSM extracted for state register state
+		worklib.dma_axi_master_wr
+			FSM extracted for state register state
+		worklib.axil_sva
+		worklib.dma_ctrl_sva
+		worklib.dma_axi_read_sva
+		worklib.dma_axi_write_sva
+		worklib.dma_axi_top
+		worklib.tb_top
+	Total FSMs extracted = 3
+xmelab: *W,COVSCE: Expression coverage is supported for expressions with static cast as a default configuration. To continue merging older databases, use the "set_backward_compat -disable_static_cast" backward compatibility command in the coverage configuration file. This command disables the support of expression coverage with static cast.
+	Building instance overlay tables: ..............
+xmelab: *W,COVFDP: FSM description matching across instance of a module for "COVFDM" warning has been moved from elaboration to simulation dumping. To restore old matching behavior, use "set_backward_compat -COVFDM_during_elab". Also, it is recommended to use set_parameterized_module_coverage CCF command to avoid coverage loss due to FSM description difference across instances of a module.
+xmelab: *W,COVFHT: FSM hold transitions (transitions to the current state) are not extracted for any FSM in default mode.
+...... Done
+	Enabling instrumentation for coverage types: block expression FSM toggle functional
+xmelab: *W,COVDCL: By default expression coverage is scored only for Verilog logical operators (|| and &&) and VHDL logical operators (OR, AND, NOR, and NAND), and is scored only in condition expressions. To score coverage for other operators and for expressions in other statements, use the "set_expr_coverable_operators" and "set_expr_coverable_statements" coverage configuration file commands with suitable options at elaboration.
+	Generating native compiled code:
+		worklib.dma_axi_write_sva:sv <0x6814e5a6>
+			streams:  78, words: 61054
+		worklib.dma_axi_read_sva:sv <0x620f94f3>
+			streams:  64, words: 50793
+		worklib.dma_ctrl_sva:sv <0x4e92283d>
+			streams:  58, words: 44006
+		worklib.axil_sva:sv <0x5eab42e8>
+			streams:  70, words: 51458
+		worklib.dma_axi_master_wr:sv <0x45550bc6>
+			streams:  25, words: 18909
+		worklib.dma_axi_master_rd:sv <0x6ac50283>
+			streams:  19, words: 15096
+		worklib.dma_fsm:sv <0x09db538e>
+			streams:  27, words: 36505
+		worklib.dma_fifo:sv <0x4c399c8f>
+			streams:  16, words: 13367
+		worklib.dma_csr:sv <0x4d08510f>
+			streams:  63, words: 41962
+		worklib.tb_top:sv <0x54640ef9>
+			streams: 1224, words: 1380159
+		worklib.cdns_uvm_pkg:sv <0x64f5e0c6>
+			streams: 179, words: 276148
+		worklib.cdns_uvmapi:svp <0x3e28c135>
+			streams:  27, words: 30091
+		worklib.cdns_assert2uvm_pkg:sv <0x114103fe>
+			streams:   3, words:  1697
+		worklib.uvm_pkg:sv <0x0caac934>
+			streams: 5098, words: 7820774
+		worklib.axil_if:sv <0x57441b3c>
+			streams:  53, words: 33141
+		worklib.axi_mem_model:sv <0x325f9dfa>
+			streams:  17, words: 37467
+		worklib.dma_axi_top:sv <0x6cdf063a>
+			streams: 126, words: 40958
+		worklib.dma_pkg:sv <0x53cf0035>
+			streams:   8, words:  2248
+  logic [WIDTH-1:0] mem [0:DEPTH-1];
+                      |
+xmelab: *W,COVMDD (./dma_fifo.sv,28|22): Toggle coverage for bit, logic, reg, wire, enum and struct multi-dimensional static arrays and vectors is not supported by default. To enable toggle coverage for enum multi-dimensional static arrays specify 'set_toggle_scoring -sv_enum enable_mda' and for other multi-dimensional static arrays, specify 'set_toggle_scoring -sv_mda [<max_bit_base2_exponent>] [-sv_mda_of_struct]' ccf command in the coverage configuration file.
+xmelab: *W,COVNOEN: By default, toggle coverage is not supported for systemverilog enumerated nets and variables. To enable toggle coverage of these objects, specify the 'set_toggle_scoring -sv_enum' command in the coverage configuration file.
+  int unsigned ar_delay_cycles;
+                             |
+xmelab: *W,COVUTA (./axi_mem_model.sv,41|29): Toggle coverage is not supported for SystemVerilog integer, real array, string, dynamic array, sparse memory and reference ports. It is also not supported for VHDL multi-dimensional array and array of record. There may also be other such objects in the design.
+	Building instance specific data structures.
+xmelab: *W,CGPIDF: Covergroup "per_instance" option , by default, is set as 0.
+xmelab: *N,COVCGN: Coverage configuration file command "set_covergroup -new_instance_reporting" can be specified to improve the scoping and naming of covergroup instances. It may be noted that subsequent merging of a coverage database saved with this command and a coverage database saved without this command is not allowed.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                        Instances  Unique
+		Modules:                       11      11
+		Interfaces:                     2       2
+		Verilog packages:               6       6
+		Registers:                 15,708  11,045
+		Scalar wires:                 185       -
+		Vectored wires:               136       -
+		Named events:                  44      52
+		Always blocks:                222     222
+		Initial blocks:               393     231
+		Clocking blocks:                2       2
+		Clocking items:                34      34
+		Parallel blocks:               27      28
+		Cont. assignments:             54      64
+		Pseudo assignments:           170       -
+		Assertions:                    58      58
+		Covergroup Instances:           0       1
+		Compilation units:              1       1
+		SV Class declarations:        213     327
+		SV Class specializations:     424     424
+		Process Clocks:                63       3
+		Simulation timescale:         1ps
+	Writing initial simulation snapshot: worklib.tb_top:sv
+TOOL:	xrun(64)	25.03-s001: Exiting on Mar 22, 2026 at 10:06:25 EDT  (total: 00:00:08)

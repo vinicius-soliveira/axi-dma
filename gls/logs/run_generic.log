@@ -1,0 +1,937 @@
+[TB] simulation started t=0
+VCD info: dumpfile dma_tb.vcd opened for output.
+[TB] waiting full reset sequence...
+[TB] reset asserted t=1000
+[TB] reset deasserted t=95000
+[TB] reset released t=135000
+[TB] post-reset sample: AWREADY=1 WREADY=1 ARREADY=1 RVALID=0 BVALID=0
+
+[TB] run_case start: TC1: Single burst t=135000
+[TB] dma_start src=00010000 dst=00020000 len=32 max_beats=8 t=135000
+[TB] csr_write addr=00000008 data=00010000 t=135000
+[TB]  AW done t=145000
+[TB]  W done t=145000
+[TB]  B done resp=0 t=165000
+[TB] csr_write addr=0000000c data=00020000 t=175000
+[TB]  AW done t=185000
+[TB]  W done t=185000
+[TB]  B done resp=0 t=205000
+[TB] csr_write addr=00000010 data=00000020 t=215000
+[TB]  AW done t=225000
+[TB]  W done t=225000
+[TB]  B done resp=0 t=245000
+[TB] csr_write addr=00000014 data=00000008 t=255000
+[TB]  AW done t=265000
+[TB]  W done t=265000
+[TB]  B done resp=0 t=285000
+[TB] csr_write addr=00000000 data=00000003 t=295000
+[TB]  AW done t=305000
+[TB]  W done t=305000
+[TB]  B done resp=0 t=325000
+[TB] csr_read addr=00000004 t=335000
+[TB] AR handshake addr=00010000 len=7 t=345000
+[TB]  R done data=00000001 resp=0 t=365000
+[TB] status=00000001 busy=1 done=0 err=0 t=375000
+[TB] csr_read addr=00000004 t=575000
+[TB]  R done data=00000001 resp=0 t=605000
+[TB] status=00000001 busy=1 done=0 err=0 t=615000
+[TB] csr_read addr=00000004 t=815000
+[TB]  R done data=00000001 resp=0 t=845000
+[TB] status=00000001 busy=1 done=0 err=0 t=855000
+[TB] csr_read addr=00000004 t=1055000
+[TB]  R done data=00000001 resp=0 t=1085000
+[TB] status=00000001 busy=1 done=0 err=0 t=1095000
+[TB] csr_read addr=00000004 t=1295000
+[TB]  R done data=00000001 resp=0 t=1325000
+[TB] status=00000001 busy=1 done=0 err=0 t=1335000
+[TB] csr_read addr=00000004 t=1535000
+[TB]  R done data=00000001 resp=0 t=1565000
+[TB] status=00000001 busy=1 done=0 err=0 t=1575000
+[TB] csr_read addr=00000004 t=1775000
+[TB]  R done data=00000001 resp=0 t=1805000
+[TB] status=00000001 busy=1 done=0 err=0 t=1815000
+[TB] csr_read addr=00000004 t=2015000
+[TB]  R done data=00000001 resp=0 t=2045000
+[TB] status=00000001 busy=1 done=0 err=0 t=2055000
+[TB] csr_read addr=00000004 t=2255000
+[TB]  R done data=00000001 resp=0 t=2285000
+[TB] status=00000001 busy=1 done=0 err=0 t=2295000
+[TB] csr_read addr=00000004 t=2495000
+[TB]  R done data=00000001 resp=0 t=2525000
+[TB] status=00000001 busy=1 done=0 err=0 t=2535000
+[TB] csr_read addr=00000004 t=2735000
+[TB]  R done data=00000001 resp=0 t=2765000
+[TB] status=00000001 busy=1 done=0 err=0 t=2775000
+[TB] csr_read addr=00000004 t=2975000
+[TB]  R done data=00000001 resp=0 t=3005000
+[TB] status=00000001 busy=1 done=0 err=0 t=3015000
+[TB] csr_read addr=00000004 t=3215000
+[TB]  R done data=00000001 resp=0 t=3245000
+[TB] status=00000001 busy=1 done=0 err=0 t=3255000
+[TB] csr_read addr=00000004 t=3455000
+[TB]  R done data=00000001 resp=0 t=3485000
+[TB] status=00000001 busy=1 done=0 err=0 t=3495000
+[TB] csr_read addr=00000004 t=3695000
+[TB]  R done data=00000001 resp=0 t=3725000
+[TB] status=00000001 busy=1 done=0 err=0 t=3735000
+[TB] csr_read addr=00000004 t=3935000
+[TB]  R done data=00000001 resp=0 t=3965000
+[TB] status=00000001 busy=1 done=0 err=0 t=3975000
+[TB] csr_read addr=00000004 t=4175000
+[TB]  R done data=00000001 resp=0 t=4205000
+[TB] status=00000001 busy=1 done=0 err=0 t=4215000
+[TB] csr_read addr=00000004 t=4415000
+[TB]  R done data=00000001 resp=0 t=4445000
+[TB] status=00000001 busy=1 done=0 err=0 t=4455000
+[TB] csr_read addr=00000004 t=4655000
+[TB]  R done data=00000001 resp=0 t=4685000
+[TB] status=00000001 busy=1 done=0 err=0 t=4695000
+[TB] csr_read addr=00000004 t=4895000
+[TB]  R done data=00000001 resp=0 t=4925000
+[TB] status=00000001 busy=1 done=0 err=0 t=4935000
+[TB] csr_read addr=00000004 t=5135000
+[TB]  R done data=00000001 resp=0 t=5165000
+[TB] status=00000001 busy=1 done=0 err=0 t=5175000
+[TB] csr_read addr=00000004 t=5375000
+[TB]  R done data=00000001 resp=0 t=5405000
+[TB] status=00000001 busy=1 done=0 err=0 t=5415000
+[TB] csr_read addr=00000004 t=5615000
+[TB]  R done data=00000001 resp=0 t=5645000
+[TB] status=00000001 busy=1 done=0 err=0 t=5655000
+[TB] csr_read addr=00000004 t=5855000
+[TB]  R done data=00000001 resp=0 t=5885000
+[TB] status=00000001 busy=1 done=0 err=0 t=5895000
+[TB] csr_read addr=00000004 t=6095000
+[TB]  R done data=00000001 resp=0 t=6125000
+[TB] status=00000001 busy=1 done=0 err=0 t=6135000
+[TB] csr_read addr=00000004 t=6335000
+[TB]  R done data=00000001 resp=0 t=6365000
+[TB] status=00000001 busy=1 done=0 err=0 t=6375000
+[TB] csr_read addr=00000004 t=6575000
+[TB]  R done data=00000001 resp=0 t=6605000
+[TB] status=00000001 busy=1 done=0 err=0 t=6615000
+[TB] csr_read addr=00000004 t=6815000
+[TB]  R done data=00000001 resp=0 t=6845000
+[TB] status=00000001 busy=1 done=0 err=0 t=6855000
+[TB] csr_read addr=00000004 t=7055000
+[TB]  R done data=00000001 resp=0 t=7085000
+[TB] status=00000001 busy=1 done=0 err=0 t=7095000
+[TB] csr_read addr=00000004 t=7295000
+[TB]  R done data=00000001 resp=0 t=7325000
+[TB] status=00000001 busy=1 done=0 err=0 t=7335000
+[TB] csr_read addr=00000004 t=7535000
+[TB]  R done data=00000001 resp=0 t=7565000
+[TB] status=00000001 busy=1 done=0 err=0 t=7575000
+[TB] csr_read addr=00000004 t=7775000
+[TB]  R done data=00000001 resp=0 t=7805000
+[TB] status=00000001 busy=1 done=0 err=0 t=7815000
+[TB] csr_read addr=00000004 t=8015000
+[TB]  R done data=00000001 resp=0 t=8045000
+[TB] status=00000001 busy=1 done=0 err=0 t=8055000
+[TB] csr_read addr=00000004 t=8255000
+[TB]  R done data=00000001 resp=0 t=8285000
+[TB] status=00000001 busy=1 done=0 err=0 t=8295000
+[TB] csr_read addr=00000004 t=8495000
+[TB]  R done data=00000001 resp=0 t=8525000
+[TB] status=00000001 busy=1 done=0 err=0 t=8535000
+[TB] csr_read addr=00000004 t=8735000
+[TB]  R done data=00000001 resp=0 t=8765000
+[TB] status=00000001 busy=1 done=0 err=0 t=8775000
+[TB] csr_read addr=00000004 t=8975000
+[TB]  R done data=00000001 resp=0 t=9005000
+[TB] status=00000001 busy=1 done=0 err=0 t=9015000
+[TB] csr_read addr=00000004 t=9215000
+[TB]  R done data=00000001 resp=0 t=9245000
+[TB] status=00000001 busy=1 done=0 err=0 t=9255000
+[TB] csr_read addr=00000004 t=9455000
+[TB]  R done data=00000001 resp=0 t=9485000
+[TB] status=00000001 busy=1 done=0 err=0 t=9495000
+[TB] csr_read addr=00000004 t=9695000
+[TB]  R done data=00000001 resp=0 t=9725000
+[TB] status=00000001 busy=1 done=0 err=0 t=9735000
+[TB] csr_read addr=00000004 t=9935000
+[TB]  R done data=00000001 resp=0 t=9965000
+[TB] status=00000001 busy=1 done=0 err=0 t=9975000
+[TB] csr_read addr=00000004 t=10175000
+[TB]  R done data=00000001 resp=0 t=10205000
+[TB] status=00000001 busy=1 done=0 err=0 t=10215000
+[TB] csr_read addr=00000004 t=10415000
+[TB]  R done data=00000001 resp=0 t=10445000
+[TB] status=00000001 busy=1 done=0 err=0 t=10455000
+[TB] csr_read addr=00000004 t=10655000
+[TB]  R done data=00000001 resp=0 t=10685000
+[TB] status=00000001 busy=1 done=0 err=0 t=10695000
+[TB] csr_read addr=00000004 t=10895000
+[TB]  R done data=00000001 resp=0 t=10925000
+[TB] status=00000001 busy=1 done=0 err=0 t=10935000
+[TB] csr_read addr=00000004 t=11135000
+[TB]  R done data=00000001 resp=0 t=11165000
+[TB] status=00000001 busy=1 done=0 err=0 t=11175000
+[TB] csr_read addr=00000004 t=11375000
+[TB]  R done data=00000001 resp=0 t=11405000
+[TB] status=00000001 busy=1 done=0 err=0 t=11415000
+[TB] csr_read addr=00000004 t=11615000
+[TB]  R done data=00000001 resp=0 t=11645000
+[TB] status=00000001 busy=1 done=0 err=0 t=11655000
+[TB] csr_read addr=00000004 t=11855000
+[TB]  R done data=00000001 resp=0 t=11885000
+[TB] status=00000001 busy=1 done=0 err=0 t=11895000
+[TB] csr_read addr=00000004 t=12095000
+[TB]  R done data=00000001 resp=0 t=12125000
+[TB] status=00000001 busy=1 done=0 err=0 t=12135000
+[TB] csr_read addr=00000004 t=12335000
+[TB]  R done data=00000001 resp=0 t=12365000
+[TB] status=00000001 busy=1 done=0 err=0 t=12375000
+[TB] csr_read addr=00000004 t=12575000
+[TB]  R done data=00000001 resp=0 t=12605000
+[TB] status=00000001 busy=1 done=0 err=0 t=12615000
+[TB] csr_read addr=00000004 t=12815000
+[TB]  R done data=00000001 resp=0 t=12845000
+[TB] status=00000001 busy=1 done=0 err=0 t=12855000
+[TB] csr_read addr=00000004 t=13055000
+[TB]  R done data=00000001 resp=0 t=13085000
+[TB] status=00000001 busy=1 done=0 err=0 t=13095000
+[TB] csr_read addr=00000004 t=13295000
+[TB]  R done data=00000001 resp=0 t=13325000
+[TB] status=00000001 busy=1 done=0 err=0 t=13335000
+[TB] csr_read addr=00000004 t=13535000
+[TB]  R done data=00000001 resp=0 t=13565000
+[TB] status=00000001 busy=1 done=0 err=0 t=13575000
+[TB] csr_read addr=00000004 t=13775000
+[TB]  R done data=00000001 resp=0 t=13805000
+[TB] status=00000001 busy=1 done=0 err=0 t=13815000
+[TB] csr_read addr=00000004 t=14015000
+[TB]  R done data=00000001 resp=0 t=14045000
+[TB] status=00000001 busy=1 done=0 err=0 t=14055000
+[TB] csr_read addr=00000004 t=14255000
+[TB]  R done data=00000001 resp=0 t=14285000
+[TB] status=00000001 busy=1 done=0 err=0 t=14295000
+[TB] csr_read addr=00000004 t=14495000
+[TB]  R done data=00000001 resp=0 t=14525000
+[TB] status=00000001 busy=1 done=0 err=0 t=14535000
+[TB] csr_read addr=00000004 t=14735000
+[TB]  R done data=00000001 resp=0 t=14765000
+[TB] status=00000001 busy=1 done=0 err=0 t=14775000
+[TB] csr_read addr=00000004 t=14975000
+[TB]  R done data=00000001 resp=0 t=15005000
+[TB] status=00000001 busy=1 done=0 err=0 t=15015000
+[TB] csr_read addr=00000004 t=15215000
+[TB]  R done data=00000001 resp=0 t=15245000
+[TB] status=00000001 busy=1 done=0 err=0 t=15255000
+[TB] csr_read addr=00000004 t=15455000
+[TB]  R done data=00000001 resp=0 t=15485000
+[TB] status=00000001 busy=1 done=0 err=0 t=15495000
+[TB] csr_read addr=00000004 t=15695000
+[TB]  R done data=00000001 resp=0 t=15725000
+[TB] status=00000001 busy=1 done=0 err=0 t=15735000
+[TB] csr_read addr=00000004 t=15935000
+[TB]  R done data=00000001 resp=0 t=15965000
+[TB] status=00000001 busy=1 done=0 err=0 t=15975000
+[TB] csr_read addr=00000004 t=16175000
+[TB]  R done data=00000001 resp=0 t=16205000
+[TB] status=00000001 busy=1 done=0 err=0 t=16215000
+[TB] csr_read addr=00000004 t=16415000
+[TB]  R done data=00000001 resp=0 t=16445000
+[TB] status=00000001 busy=1 done=0 err=0 t=16455000
+[TB] csr_read addr=00000004 t=16655000
+[TB]  R done data=00000001 resp=0 t=16685000
+[TB] status=00000001 busy=1 done=0 err=0 t=16695000
+[TB] csr_read addr=00000004 t=16895000
+[TB]  R done data=00000001 resp=0 t=16925000
+[TB] status=00000001 busy=1 done=0 err=0 t=16935000
+[TB] csr_read addr=00000004 t=17135000
+[TB]  R done data=00000001 resp=0 t=17165000
+[TB] status=00000001 busy=1 done=0 err=0 t=17175000
+[TB] csr_read addr=00000004 t=17375000
+[TB]  R done data=00000001 resp=0 t=17405000
+[TB] status=00000001 busy=1 done=0 err=0 t=17415000
+[TB] csr_read addr=00000004 t=17615000
+[TB]  R done data=00000001 resp=0 t=17645000
+[TB] status=00000001 busy=1 done=0 err=0 t=17655000
+[TB] csr_read addr=00000004 t=17855000
+[TB]  R done data=00000001 resp=0 t=17885000
+[TB] status=00000001 busy=1 done=0 err=0 t=17895000
+[TB] csr_read addr=00000004 t=18095000
+[TB]  R done data=00000001 resp=0 t=18125000
+[TB] status=00000001 busy=1 done=0 err=0 t=18135000
+[TB] csr_read addr=00000004 t=18335000
+[TB]  R done data=00000001 resp=0 t=18365000
+[TB] status=00000001 busy=1 done=0 err=0 t=18375000
+[TB] csr_read addr=00000004 t=18575000
+[TB]  R done data=00000001 resp=0 t=18605000
+[TB] status=00000001 busy=1 done=0 err=0 t=18615000
+[TB] csr_read addr=00000004 t=18815000
+[TB]  R done data=00000001 resp=0 t=18845000
+[TB] status=00000001 busy=1 done=0 err=0 t=18855000
+[TB] csr_read addr=00000004 t=19055000
+[TB]  R done data=00000001 resp=0 t=19085000
+[TB] status=00000001 busy=1 done=0 err=0 t=19095000
+[TB] csr_read addr=00000004 t=19295000
+[TB]  R done data=00000001 resp=0 t=19325000
+[TB] status=00000001 busy=1 done=0 err=0 t=19335000
+[TB] csr_read addr=00000004 t=19535000
+[TB]  R done data=00000001 resp=0 t=19565000
+[TB] status=00000001 busy=1 done=0 err=0 t=19575000
+[TB] csr_read addr=00000004 t=19775000
+[TB]  R done data=00000001 resp=0 t=19805000
+[TB] status=00000001 busy=1 done=0 err=0 t=19815000
+[TB] csr_read addr=00000004 t=20015000
+[TB]  R done data=00000001 resp=0 t=20045000
+[TB] status=00000001 busy=1 done=0 err=0 t=20055000
+[TB] csr_read addr=00000004 t=20255000
+[TB]  R done data=00000001 resp=0 t=20285000
+[TB] status=00000001 busy=1 done=0 err=0 t=20295000
+[TB] csr_read addr=00000004 t=20495000
+[TB]  R done data=00000001 resp=0 t=20525000
+[TB] status=00000001 busy=1 done=0 err=0 t=20535000
+[TB] csr_read addr=00000004 t=20735000
+[TB]  R done data=00000001 resp=0 t=20765000
+[TB] status=00000001 busy=1 done=0 err=0 t=20775000
+[TB] csr_read addr=00000004 t=20975000
+[TB]  R done data=00000001 resp=0 t=21005000
+[TB] status=00000001 busy=1 done=0 err=0 t=21015000
+[TB] csr_read addr=00000004 t=21215000
+[TB]  R done data=00000001 resp=0 t=21245000
+[TB] status=00000001 busy=1 done=0 err=0 t=21255000
+[TB] csr_read addr=00000004 t=21455000
+[TB]  R done data=00000001 resp=0 t=21485000
+[TB] status=00000001 busy=1 done=0 err=0 t=21495000
+[TB] csr_read addr=00000004 t=21695000
+[TB]  R done data=00000001 resp=0 t=21725000
+[TB] status=00000001 busy=1 done=0 err=0 t=21735000
+[TB] csr_read addr=00000004 t=21935000
+[TB]  R done data=00000001 resp=0 t=21965000
+[TB] status=00000001 busy=1 done=0 err=0 t=21975000
+[TB] csr_read addr=00000004 t=22175000
+[TB]  R done data=00000001 resp=0 t=22205000
+[TB] status=00000001 busy=1 done=0 err=0 t=22215000
+[TB] csr_read addr=00000004 t=22415000
+[TB]  R done data=00000001 resp=0 t=22445000
+[TB] status=00000001 busy=1 done=0 err=0 t=22455000
+[TB] csr_read addr=00000004 t=22655000
+[TB]  R done data=00000001 resp=0 t=22685000
+[TB] status=00000001 busy=1 done=0 err=0 t=22695000
+[TB] csr_read addr=00000004 t=22895000
+[TB]  R done data=00000001 resp=0 t=22925000
+[TB] status=00000001 busy=1 done=0 err=0 t=22935000
+[TB] csr_read addr=00000004 t=23135000
+[TB]  R done data=00000001 resp=0 t=23165000
+[TB] status=00000001 busy=1 done=0 err=0 t=23175000
+[TB] csr_read addr=00000004 t=23375000
+[TB]  R done data=00000001 resp=0 t=23405000
+[TB] status=00000001 busy=1 done=0 err=0 t=23415000
+[TB] csr_read addr=00000004 t=23615000
+[TB]  R done data=00000001 resp=0 t=23645000
+[TB] status=00000001 busy=1 done=0 err=0 t=23655000
+[TB] csr_read addr=00000004 t=23855000
+[TB]  R done data=00000001 resp=0 t=23885000
+[TB] status=00000001 busy=1 done=0 err=0 t=23895000
+[TB] csr_read addr=00000004 t=24095000
+[TB]  R done data=00000001 resp=0 t=24125000
+[TB] status=00000001 busy=1 done=0 err=0 t=24135000
+[TB] csr_read addr=00000004 t=24335000
+[TB]  R done data=00000001 resp=0 t=24365000
+[TB] status=00000001 busy=1 done=0 err=0 t=24375000
+[TB] csr_read addr=00000004 t=24575000
+[TB]  R done data=00000001 resp=0 t=24605000
+[TB] status=00000001 busy=1 done=0 err=0 t=24615000
+[TB] csr_read addr=00000004 t=24815000
+[TB]  R done data=00000001 resp=0 t=24845000
+[TB] status=00000001 busy=1 done=0 err=0 t=24855000
+[TB] csr_read addr=00000004 t=25055000
+[TB]  R done data=00000001 resp=0 t=25085000
+[TB] status=00000001 busy=1 done=0 err=0 t=25095000
+[TB] csr_read addr=00000004 t=25295000
+[TB]  R done data=00000001 resp=0 t=25325000
+[TB] status=00000001 busy=1 done=0 err=0 t=25335000
+[TB] csr_read addr=00000004 t=25535000
+[TB]  R done data=00000001 resp=0 t=25565000
+[TB] status=00000001 busy=1 done=0 err=0 t=25575000
+[TB] csr_read addr=00000004 t=25775000
+[TB]  R done data=00000001 resp=0 t=25805000
+[TB] status=00000001 busy=1 done=0 err=0 t=25815000
+[TB] csr_read addr=00000004 t=26015000
+[TB]  R done data=00000001 resp=0 t=26045000
+[TB] status=00000001 busy=1 done=0 err=0 t=26055000
+[TB] csr_read addr=00000004 t=26255000
+[TB]  R done data=00000001 resp=0 t=26285000
+[TB] status=00000001 busy=1 done=0 err=0 t=26295000
+[TB] csr_read addr=00000004 t=26495000
+[TB]  R done data=00000001 resp=0 t=26525000
+[TB] status=00000001 busy=1 done=0 err=0 t=26535000
+[TB] csr_read addr=00000004 t=26735000
+[TB]  R done data=00000001 resp=0 t=26765000
+[TB] status=00000001 busy=1 done=0 err=0 t=26775000
+[TB] csr_read addr=00000004 t=26975000
+[TB]  R done data=00000001 resp=0 t=27005000
+[TB] status=00000001 busy=1 done=0 err=0 t=27015000
+[TB] csr_read addr=00000004 t=27215000
+[TB]  R done data=00000001 resp=0 t=27245000
+[TB] status=00000001 busy=1 done=0 err=0 t=27255000
+[TB] csr_read addr=00000004 t=27455000
+[TB]  R done data=00000001 resp=0 t=27485000
+[TB] status=00000001 busy=1 done=0 err=0 t=27495000
+[TB] csr_read addr=00000004 t=27695000
+[TB]  R done data=00000001 resp=0 t=27725000
+[TB] status=00000001 busy=1 done=0 err=0 t=27735000
+[TB] csr_read addr=00000004 t=27935000
+[TB]  R done data=00000001 resp=0 t=27965000
+[TB] status=00000001 busy=1 done=0 err=0 t=27975000
+[TB] csr_read addr=00000004 t=28175000
+[TB]  R done data=00000001 resp=0 t=28205000
+[TB] status=00000001 busy=1 done=0 err=0 t=28215000
+[TB] csr_read addr=00000004 t=28415000
+[TB]  R done data=00000001 resp=0 t=28445000
+[TB] status=00000001 busy=1 done=0 err=0 t=28455000
+[TB] csr_read addr=00000004 t=28655000
+[TB]  R done data=00000001 resp=0 t=28685000
+[TB] status=00000001 busy=1 done=0 err=0 t=28695000
+[TB] csr_read addr=00000004 t=28895000
+[TB]  R done data=00000001 resp=0 t=28925000
+[TB] status=00000001 busy=1 done=0 err=0 t=28935000
+[TB] csr_read addr=00000004 t=29135000
+[TB]  R done data=00000001 resp=0 t=29165000
+[TB] status=00000001 busy=1 done=0 err=0 t=29175000
+[TB] csr_read addr=00000004 t=29375000
+[TB]  R done data=00000001 resp=0 t=29405000
+[TB] status=00000001 busy=1 done=0 err=0 t=29415000
+[TB] csr_read addr=00000004 t=29615000
+[TB]  R done data=00000001 resp=0 t=29645000
+[TB] status=00000001 busy=1 done=0 err=0 t=29655000
+[TB] csr_read addr=00000004 t=29855000
+[TB]  R done data=00000001 resp=0 t=29885000
+[TB] status=00000001 busy=1 done=0 err=0 t=29895000
+[TB] csr_read addr=00000004 t=30095000
+[TB]  R done data=00000001 resp=0 t=30125000
+[TB] status=00000001 busy=1 done=0 err=0 t=30135000
+[TB] csr_read addr=00000004 t=30335000
+[TB]  R done data=00000001 resp=0 t=30365000
+[TB] status=00000001 busy=1 done=0 err=0 t=30375000
+[TB] csr_read addr=00000004 t=30575000
+[TB]  R done data=00000001 resp=0 t=30605000
+[TB] status=00000001 busy=1 done=0 err=0 t=30615000
+[TB] csr_read addr=00000004 t=30815000
+[TB]  R done data=00000001 resp=0 t=30845000
+[TB] status=00000001 busy=1 done=0 err=0 t=30855000
+[TB] csr_read addr=00000004 t=31055000
+[TB]  R done data=00000001 resp=0 t=31085000
+[TB] status=00000001 busy=1 done=0 err=0 t=31095000
+[TB] csr_read addr=00000004 t=31295000
+[TB]  R done data=00000001 resp=0 t=31325000
+[TB] status=00000001 busy=1 done=0 err=0 t=31335000
+[TB] csr_read addr=00000004 t=31535000
+[TB]  R done data=00000001 resp=0 t=31565000
+[TB] status=00000001 busy=1 done=0 err=0 t=31575000
+[TB] csr_read addr=00000004 t=31775000
+[TB]  R done data=00000001 resp=0 t=31805000
+[TB] status=00000001 busy=1 done=0 err=0 t=31815000
+[TB] csr_read addr=00000004 t=32015000
+[TB]  R done data=00000001 resp=0 t=32045000
+[TB] status=00000001 busy=1 done=0 err=0 t=32055000
+[TB] csr_read addr=00000004 t=32255000
+[TB]  R done data=00000001 resp=0 t=32285000
+[TB] status=00000001 busy=1 done=0 err=0 t=32295000
+[TB] csr_read addr=00000004 t=32495000
+[TB]  R done data=00000001 resp=0 t=32525000
+[TB] status=00000001 busy=1 done=0 err=0 t=32535000
+[TB] csr_read addr=00000004 t=32735000
+[TB]  R done data=00000001 resp=0 t=32765000
+[TB] status=00000001 busy=1 done=0 err=0 t=32775000
+[TB] csr_read addr=00000004 t=32975000
+[TB]  R done data=00000001 resp=0 t=33005000
+[TB] status=00000001 busy=1 done=0 err=0 t=33015000
+[TB] csr_read addr=00000004 t=33215000
+[TB]  R done data=00000001 resp=0 t=33245000
+[TB] status=00000001 busy=1 done=0 err=0 t=33255000
+[TB] csr_read addr=00000004 t=33455000
+[TB]  R done data=00000001 resp=0 t=33485000
+[TB] status=00000001 busy=1 done=0 err=0 t=33495000
+[TB] csr_read addr=00000004 t=33695000
+[TB]  R done data=00000001 resp=0 t=33725000
+[TB] status=00000001 busy=1 done=0 err=0 t=33735000
+[TB] csr_read addr=00000004 t=33935000
+[TB]  R done data=00000001 resp=0 t=33965000
+[TB] status=00000001 busy=1 done=0 err=0 t=33975000
+[TB] csr_read addr=00000004 t=34175000
+[TB]  R done data=00000001 resp=0 t=34205000
+[TB] status=00000001 busy=1 done=0 err=0 t=34215000
+[TB] csr_read addr=00000004 t=34415000
+[TB]  R done data=00000001 resp=0 t=34445000
+[TB] status=00000001 busy=1 done=0 err=0 t=34455000
+[TB] csr_read addr=00000004 t=34655000
+[TB]  R done data=00000001 resp=0 t=34685000
+[TB] status=00000001 busy=1 done=0 err=0 t=34695000
+[TB] csr_read addr=00000004 t=34895000
+[TB]  R done data=00000001 resp=0 t=34925000
+[TB] status=00000001 busy=1 done=0 err=0 t=34935000
+[TB] csr_read addr=00000004 t=35135000
+[TB]  R done data=00000001 resp=0 t=35165000
+[TB] status=00000001 busy=1 done=0 err=0 t=35175000
+[TB] csr_read addr=00000004 t=35375000
+[TB]  R done data=00000001 resp=0 t=35405000
+[TB] status=00000001 busy=1 done=0 err=0 t=35415000
+[TB] csr_read addr=00000004 t=35615000
+[TB]  R done data=00000001 resp=0 t=35645000
+[TB] status=00000001 busy=1 done=0 err=0 t=35655000
+[TB] csr_read addr=00000004 t=35855000
+[TB]  R done data=00000001 resp=0 t=35885000
+[TB] status=00000001 busy=1 done=0 err=0 t=35895000
+[TB] csr_read addr=00000004 t=36095000
+[TB]  R done data=00000001 resp=0 t=36125000
+[TB] status=00000001 busy=1 done=0 err=0 t=36135000
+[TB] csr_read addr=00000004 t=36335000
+[TB]  R done data=00000001 resp=0 t=36365000
+[TB] status=00000001 busy=1 done=0 err=0 t=36375000
+[TB] csr_read addr=00000004 t=36575000
+[TB]  R done data=00000001 resp=0 t=36605000
+[TB] status=00000001 busy=1 done=0 err=0 t=36615000
+[TB] csr_read addr=00000004 t=36815000
+[TB]  R done data=00000001 resp=0 t=36845000
+[TB] status=00000001 busy=1 done=0 err=0 t=36855000
+[TB] csr_read addr=00000004 t=37055000
+[TB]  R done data=00000001 resp=0 t=37085000
+[TB] status=00000001 busy=1 done=0 err=0 t=37095000
+[TB] csr_read addr=00000004 t=37295000
+[TB]  R done data=00000001 resp=0 t=37325000
+[TB] status=00000001 busy=1 done=0 err=0 t=37335000
+[TB] csr_read addr=00000004 t=37535000
+[TB]  R done data=00000001 resp=0 t=37565000
+[TB] status=00000001 busy=1 done=0 err=0 t=37575000
+[TB] csr_read addr=00000004 t=37775000
+[TB]  R done data=00000001 resp=0 t=37805000
+[TB] status=00000001 busy=1 done=0 err=0 t=37815000
+[TB] csr_read addr=00000004 t=38015000
+[TB]  R done data=00000001 resp=0 t=38045000
+[TB] status=00000001 busy=1 done=0 err=0 t=38055000
+[TB] csr_read addr=00000004 t=38255000
+[TB]  R done data=00000001 resp=0 t=38285000
+[TB] status=00000001 busy=1 done=0 err=0 t=38295000
+[TB] csr_read addr=00000004 t=38495000
+[TB]  R done data=00000001 resp=0 t=38525000
+[TB] status=00000001 busy=1 done=0 err=0 t=38535000
+[TB] csr_read addr=00000004 t=38735000
+[TB]  R done data=00000001 resp=0 t=38765000
+[TB] status=00000001 busy=1 done=0 err=0 t=38775000
+[TB] csr_read addr=00000004 t=38975000
+[TB]  R done data=00000001 resp=0 t=39005000
+[TB] status=00000001 busy=1 done=0 err=0 t=39015000
+[TB] csr_read addr=00000004 t=39215000
+[TB]  R done data=00000001 resp=0 t=39245000
+[TB] status=00000001 busy=1 done=0 err=0 t=39255000
+[TB] csr_read addr=00000004 t=39455000
+[TB]  R done data=00000001 resp=0 t=39485000
+[TB] status=00000001 busy=1 done=0 err=0 t=39495000
+[TB] csr_read addr=00000004 t=39695000
+[TB]  R done data=00000001 resp=0 t=39725000
+[TB] status=00000001 busy=1 done=0 err=0 t=39735000
+[TB] csr_read addr=00000004 t=39935000
+[TB]  R done data=00000001 resp=0 t=39965000
+[TB] status=00000001 busy=1 done=0 err=0 t=39975000
+[TB] csr_read addr=00000004 t=40175000
+[TB]  R done data=00000001 resp=0 t=40205000
+[TB] status=00000001 busy=1 done=0 err=0 t=40215000
+[TB] csr_read addr=00000004 t=40415000
+[TB]  R done data=00000001 resp=0 t=40445000
+[TB] status=00000001 busy=1 done=0 err=0 t=40455000
+[TB] csr_read addr=00000004 t=40655000
+[TB]  R done data=00000001 resp=0 t=40685000
+[TB] status=00000001 busy=1 done=0 err=0 t=40695000
+[TB] csr_read addr=00000004 t=40895000
+[TB]  R done data=00000001 resp=0 t=40925000
+[TB] status=00000001 busy=1 done=0 err=0 t=40935000
+[TB] csr_read addr=00000004 t=41135000
+[TB]  R done data=00000001 resp=0 t=41165000
+[TB] status=00000001 busy=1 done=0 err=0 t=41175000
+[TB] csr_read addr=00000004 t=41375000
+[TB]  R done data=00000001 resp=0 t=41405000
+[TB] status=00000001 busy=1 done=0 err=0 t=41415000
+[TB] csr_read addr=00000004 t=41615000
+[TB]  R done data=00000001 resp=0 t=41645000
+[TB] status=00000001 busy=1 done=0 err=0 t=41655000
+[TB] csr_read addr=00000004 t=41855000
+[TB]  R done data=00000001 resp=0 t=41885000
+[TB] status=00000001 busy=1 done=0 err=0 t=41895000
+[TB] csr_read addr=00000004 t=42095000
+[TB]  R done data=00000001 resp=0 t=42125000
+[TB] status=00000001 busy=1 done=0 err=0 t=42135000
+[TB] csr_read addr=00000004 t=42335000
+[TB]  R done data=00000001 resp=0 t=42365000
+[TB] status=00000001 busy=1 done=0 err=0 t=42375000
+[TB] csr_read addr=00000004 t=42575000
+[TB]  R done data=00000001 resp=0 t=42605000
+[TB] status=00000001 busy=1 done=0 err=0 t=42615000
+[TB] csr_read addr=00000004 t=42815000
+[TB]  R done data=00000001 resp=0 t=42845000
+[TB] status=00000001 busy=1 done=0 err=0 t=42855000
+[TB] csr_read addr=00000004 t=43055000
+[TB]  R done data=00000001 resp=0 t=43085000
+[TB] status=00000001 busy=1 done=0 err=0 t=43095000
+[TB] csr_read addr=00000004 t=43295000
+[TB]  R done data=00000001 resp=0 t=43325000
+[TB] status=00000001 busy=1 done=0 err=0 t=43335000
+[TB] csr_read addr=00000004 t=43535000
+[TB]  R done data=00000001 resp=0 t=43565000
+[TB] status=00000001 busy=1 done=0 err=0 t=43575000
+[TB] csr_read addr=00000004 t=43775000
+[TB]  R done data=00000001 resp=0 t=43805000
+[TB] status=00000001 busy=1 done=0 err=0 t=43815000
+[TB] csr_read addr=00000004 t=44015000
+[TB]  R done data=00000001 resp=0 t=44045000
+[TB] status=00000001 busy=1 done=0 err=0 t=44055000
+[TB] csr_read addr=00000004 t=44255000
+[TB]  R done data=00000001 resp=0 t=44285000
+[TB] status=00000001 busy=1 done=0 err=0 t=44295000
+[TB] csr_read addr=00000004 t=44495000
+[TB]  R done data=00000001 resp=0 t=44525000
+[TB] status=00000001 busy=1 done=0 err=0 t=44535000
+[TB] csr_read addr=00000004 t=44735000
+[TB]  R done data=00000001 resp=0 t=44765000
+[TB] status=00000001 busy=1 done=0 err=0 t=44775000
+[TB] csr_read addr=00000004 t=44975000
+[TB]  R done data=00000001 resp=0 t=45005000
+[TB] status=00000001 busy=1 done=0 err=0 t=45015000
+[TB] csr_read addr=00000004 t=45215000
+[TB]  R done data=00000001 resp=0 t=45245000
+[TB] status=00000001 busy=1 done=0 err=0 t=45255000
+[TB] csr_read addr=00000004 t=45455000
+[TB]  R done data=00000001 resp=0 t=45485000
+[TB] status=00000001 busy=1 done=0 err=0 t=45495000
+[TB] csr_read addr=00000004 t=45695000
+[TB]  R done data=00000001 resp=0 t=45725000
+[TB] status=00000001 busy=1 done=0 err=0 t=45735000
+[TB] csr_read addr=00000004 t=45935000
+[TB]  R done data=00000001 resp=0 t=45965000
+[TB] status=00000001 busy=1 done=0 err=0 t=45975000
+[TB] csr_read addr=00000004 t=46175000
+[TB]  R done data=00000001 resp=0 t=46205000
+[TB] status=00000001 busy=1 done=0 err=0 t=46215000
+[TB] csr_read addr=00000004 t=46415000
+[TB]  R done data=00000001 resp=0 t=46445000
+[TB] status=00000001 busy=1 done=0 err=0 t=46455000
+[TB] csr_read addr=00000004 t=46655000
+[TB]  R done data=00000001 resp=0 t=46685000
+[TB] status=00000001 busy=1 done=0 err=0 t=46695000
+[TB] csr_read addr=00000004 t=46895000
+[TB]  R done data=00000001 resp=0 t=46925000
+[TB] status=00000001 busy=1 done=0 err=0 t=46935000
+[TB] csr_read addr=00000004 t=47135000
+[TB]  R done data=00000001 resp=0 t=47165000
+[TB] status=00000001 busy=1 done=0 err=0 t=47175000
+[TB] csr_read addr=00000004 t=47375000
+[TB]  R done data=00000001 resp=0 t=47405000
+[TB] status=00000001 busy=1 done=0 err=0 t=47415000
+[TB] csr_read addr=00000004 t=47615000
+[TB]  R done data=00000001 resp=0 t=47645000
+[TB] status=00000001 busy=1 done=0 err=0 t=47655000
+[TB] csr_read addr=00000004 t=47855000
+[TB]  R done data=00000001 resp=0 t=47885000
+[TB] status=00000001 busy=1 done=0 err=0 t=47895000
+[TB] csr_read addr=00000004 t=48095000
+[TB]  R done data=00000001 resp=0 t=48125000
+[TB] status=00000001 busy=1 done=0 err=0 t=48135000
+[TB] csr_read addr=00000004 t=48335000
+[TB]  R done data=00000001 resp=0 t=48365000
+[TB] status=00000001 busy=1 done=0 err=0 t=48375000
+[TB] csr_read addr=00000004 t=48575000
+[TB]  R done data=00000001 resp=0 t=48605000
+[TB] status=00000001 busy=1 done=0 err=0 t=48615000
+[TB] csr_read addr=00000004 t=48815000
+[TB]  R done data=00000001 resp=0 t=48845000
+[TB] status=00000001 busy=1 done=0 err=0 t=48855000
+[TB] csr_read addr=00000004 t=49055000
+[TB]  R done data=00000001 resp=0 t=49085000
+[TB] status=00000001 busy=1 done=0 err=0 t=49095000
+[TB] csr_read addr=00000004 t=49295000
+[TB]  R done data=00000001 resp=0 t=49325000
+[TB] status=00000001 busy=1 done=0 err=0 t=49335000
+[TB] csr_read addr=00000004 t=49535000
+[TB]  R done data=00000001 resp=0 t=49565000
+[TB] status=00000001 busy=1 done=0 err=0 t=49575000
+[TB] csr_read addr=00000004 t=49775000
+[TB]  R done data=00000001 resp=0 t=49805000
+[TB] status=00000001 busy=1 done=0 err=0 t=49815000
+[TB] csr_read addr=00000004 t=50015000
+[TB]  R done data=00000001 resp=0 t=50045000
+[TB] status=00000001 busy=1 done=0 err=0 t=50055000
+[TB] csr_read addr=00000004 t=50255000
+[TB]  R done data=00000001 resp=0 t=50285000
+[TB] status=00000001 busy=1 done=0 err=0 t=50295000
+[TB] csr_read addr=00000004 t=50495000
+[TB]  R done data=00000001 resp=0 t=50525000
+[TB] status=00000001 busy=1 done=0 err=0 t=50535000
+[TB] csr_read addr=00000004 t=50735000
+[TB]  R done data=00000001 resp=0 t=50765000
+[TB] status=00000001 busy=1 done=0 err=0 t=50775000
+[TB] csr_read addr=00000004 t=50975000
+[TB]  R done data=00000001 resp=0 t=51005000
+[TB] status=00000001 busy=1 done=0 err=0 t=51015000
+[TB] csr_read addr=00000004 t=51215000
+[TB]  R done data=00000001 resp=0 t=51245000
+[TB] status=00000001 busy=1 done=0 err=0 t=51255000
+[TB] csr_read addr=00000004 t=51455000
+[TB]  R done data=00000001 resp=0 t=51485000
+[TB] status=00000001 busy=1 done=0 err=0 t=51495000
+[TB] csr_read addr=00000004 t=51695000
+[TB]  R done data=00000001 resp=0 t=51725000
+[TB] status=00000001 busy=1 done=0 err=0 t=51735000
+[TB] csr_read addr=00000004 t=51935000
+[TB]  R done data=00000001 resp=0 t=51965000
+[TB] status=00000001 busy=1 done=0 err=0 t=51975000
+[TB] csr_read addr=00000004 t=52175000
+[TB]  R done data=00000001 resp=0 t=52205000
+[TB] status=00000001 busy=1 done=0 err=0 t=52215000
+[TB] csr_read addr=00000004 t=52415000
+[TB]  R done data=00000001 resp=0 t=52445000
+[TB] status=00000001 busy=1 done=0 err=0 t=52455000
+[TB] csr_read addr=00000004 t=52655000
+[TB]  R done data=00000001 resp=0 t=52685000
+[TB] status=00000001 busy=1 done=0 err=0 t=52695000
+[TB] csr_read addr=00000004 t=52895000
+[TB]  R done data=00000001 resp=0 t=52925000
+[TB] status=00000001 busy=1 done=0 err=0 t=52935000
+[TB] csr_read addr=00000004 t=53135000
+[TB]  R done data=00000001 resp=0 t=53165000
+[TB] status=00000001 busy=1 done=0 err=0 t=53175000
+[TB] csr_read addr=00000004 t=53375000
+[TB]  R done data=00000001 resp=0 t=53405000
+[TB] status=00000001 busy=1 done=0 err=0 t=53415000
+[TB] csr_read addr=00000004 t=53615000
+[TB]  R done data=00000001 resp=0 t=53645000
+[TB] status=00000001 busy=1 done=0 err=0 t=53655000
+[TB] csr_read addr=00000004 t=53855000
+[TB]  R done data=00000001 resp=0 t=53885000
+[TB] status=00000001 busy=1 done=0 err=0 t=53895000
+[TB] csr_read addr=00000004 t=54095000
+[TB]  R done data=00000001 resp=0 t=54125000
+[TB] status=00000001 busy=1 done=0 err=0 t=54135000
+[TB] csr_read addr=00000004 t=54335000
+[TB]  R done data=00000001 resp=0 t=54365000
+[TB] status=00000001 busy=1 done=0 err=0 t=54375000
+[TB] csr_read addr=00000004 t=54575000
+[TB]  R done data=00000001 resp=0 t=54605000
+[TB] status=00000001 busy=1 done=0 err=0 t=54615000
+[TB] csr_read addr=00000004 t=54815000
+[TB]  R done data=00000001 resp=0 t=54845000
+[TB] status=00000001 busy=1 done=0 err=0 t=54855000
+[TB] csr_read addr=00000004 t=55055000
+[TB]  R done data=00000001 resp=0 t=55085000
+[TB] status=00000001 busy=1 done=0 err=0 t=55095000
+[TB] csr_read addr=00000004 t=55295000
+[TB]  R done data=00000001 resp=0 t=55325000
+[TB] status=00000001 busy=1 done=0 err=0 t=55335000
+[TB] csr_read addr=00000004 t=55535000
+[TB]  R done data=00000001 resp=0 t=55565000
+[TB] status=00000001 busy=1 done=0 err=0 t=55575000
+[TB] csr_read addr=00000004 t=55775000
+[TB]  R done data=00000001 resp=0 t=55805000
+[TB] status=00000001 busy=1 done=0 err=0 t=55815000
+[TB] csr_read addr=00000004 t=56015000
+[TB]  R done data=00000001 resp=0 t=56045000
+[TB] status=00000001 busy=1 done=0 err=0 t=56055000
+[TB] csr_read addr=00000004 t=56255000
+[TB]  R done data=00000001 resp=0 t=56285000
+[TB] status=00000001 busy=1 done=0 err=0 t=56295000
+[TB] csr_read addr=00000004 t=56495000
+[TB]  R done data=00000001 resp=0 t=56525000
+[TB] status=00000001 busy=1 done=0 err=0 t=56535000
+[TB] csr_read addr=00000004 t=56735000
+[TB]  R done data=00000001 resp=0 t=56765000
+[TB] status=00000001 busy=1 done=0 err=0 t=56775000
+[TB] csr_read addr=00000004 t=56975000
+[TB]  R done data=00000001 resp=0 t=57005000
+[TB] status=00000001 busy=1 done=0 err=0 t=57015000
+[TB] csr_read addr=00000004 t=57215000
+[TB]  R done data=00000001 resp=0 t=57245000
+[TB] status=00000001 busy=1 done=0 err=0 t=57255000
+[TB] csr_read addr=00000004 t=57455000
+[TB]  R done data=00000001 resp=0 t=57485000
+[TB] status=00000001 busy=1 done=0 err=0 t=57495000
+[TB] csr_read addr=00000004 t=57695000
+[TB]  R done data=00000001 resp=0 t=57725000
+[TB] status=00000001 busy=1 done=0 err=0 t=57735000
+[TB] csr_read addr=00000004 t=57935000
+[TB]  R done data=00000001 resp=0 t=57965000
+[TB] status=00000001 busy=1 done=0 err=0 t=57975000
+[TB] csr_read addr=00000004 t=58175000
+[TB]  R done data=00000001 resp=0 t=58205000
+[TB] status=00000001 busy=1 done=0 err=0 t=58215000
+[TB] csr_read addr=00000004 t=58415000
+[TB]  R done data=00000001 resp=0 t=58445000
+[TB] status=00000001 busy=1 done=0 err=0 t=58455000
+[TB] csr_read addr=00000004 t=58655000
+[TB]  R done data=00000001 resp=0 t=58685000
+[TB] status=00000001 busy=1 done=0 err=0 t=58695000
+[TB] csr_read addr=00000004 t=58895000
+[TB]  R done data=00000001 resp=0 t=58925000
+[TB] status=00000001 busy=1 done=0 err=0 t=58935000
+[TB] csr_read addr=00000004 t=59135000
+[TB]  R done data=00000001 resp=0 t=59165000
+[TB] status=00000001 busy=1 done=0 err=0 t=59175000
+[TB] csr_read addr=00000004 t=59375000
+[TB]  R done data=00000001 resp=0 t=59405000
+[TB] status=00000001 busy=1 done=0 err=0 t=59415000
+[TB] csr_read addr=00000004 t=59615000
+[TB]  R done data=00000001 resp=0 t=59645000
+[TB] status=00000001 busy=1 done=0 err=0 t=59655000
+[TB] csr_read addr=00000004 t=59855000
+[TB]  R done data=00000001 resp=0 t=59885000
+[TB] status=00000001 busy=1 done=0 err=0 t=59895000
+[TB] csr_read addr=00000004 t=60095000
+[TB]  R done data=00000001 resp=0 t=60125000
+[TB] status=00000001 busy=1 done=0 err=0 t=60135000
+[TB] csr_read addr=00000004 t=60335000
+[TB]  R done data=00000001 resp=0 t=60365000
+[TB] status=00000001 busy=1 done=0 err=0 t=60375000
+[TB] csr_read addr=00000004 t=60575000
+[TB]  R done data=00000001 resp=0 t=60605000
+[TB] status=00000001 busy=1 done=0 err=0 t=60615000
+[TB] csr_read addr=00000004 t=60815000
+[TB]  R done data=00000001 resp=0 t=60845000
+[TB] status=00000001 busy=1 done=0 err=0 t=60855000
+[TB] csr_read addr=00000004 t=61055000
+[TB]  R done data=00000001 resp=0 t=61085000
+[TB] status=00000001 busy=1 done=0 err=0 t=61095000
+[TB] csr_read addr=00000004 t=61295000
+[TB]  R done data=00000001 resp=0 t=61325000
+[TB] status=00000001 busy=1 done=0 err=0 t=61335000
+[TB] csr_read addr=00000004 t=61535000
+[TB]  R done data=00000001 resp=0 t=61565000
+[TB] status=00000001 busy=1 done=0 err=0 t=61575000
+[TB] csr_read addr=00000004 t=61775000
+[TB]  R done data=00000001 resp=0 t=61805000
+[TB] status=00000001 busy=1 done=0 err=0 t=61815000
+[TB] csr_read addr=00000004 t=62015000
+[TB]  R done data=00000001 resp=0 t=62045000
+[TB] status=00000001 busy=1 done=0 err=0 t=62055000
+[TB] csr_read addr=00000004 t=62255000
+[TB]  R done data=00000001 resp=0 t=62285000
+[TB] status=00000001 busy=1 done=0 err=0 t=62295000
+[TB] csr_read addr=00000004 t=62495000
+[TB]  R done data=00000001 resp=0 t=62525000
+[TB] status=00000001 busy=1 done=0 err=0 t=62535000
+[TB] csr_read addr=00000004 t=62735000
+[TB]  R done data=00000001 resp=0 t=62765000
+[TB] status=00000001 busy=1 done=0 err=0 t=62775000
+[TB] csr_read addr=00000004 t=62975000
+[TB]  R done data=00000001 resp=0 t=63005000
+[TB] status=00000001 busy=1 done=0 err=0 t=63015000
+[TB] csr_read addr=00000004 t=63215000
+[TB]  R done data=00000001 resp=0 t=63245000
+[TB] status=00000001 busy=1 done=0 err=0 t=63255000
+[TB] csr_read addr=00000004 t=63455000
+[TB]  R done data=00000001 resp=0 t=63485000
+[TB] status=00000001 busy=1 done=0 err=0 t=63495000
+[TB] csr_read addr=00000004 t=63695000
+[TB]  R done data=00000001 resp=0 t=63725000
+[TB] status=00000001 busy=1 done=0 err=0 t=63735000
+[TB] csr_read addr=00000004 t=63935000
+[TB]  R done data=00000001 resp=0 t=63965000
+[TB] status=00000001 busy=1 done=0 err=0 t=63975000
+[TB] csr_read addr=00000004 t=64175000
+[TB]  R done data=00000001 resp=0 t=64205000
+[TB] status=00000001 busy=1 done=0 err=0 t=64215000
+[TB] csr_read addr=00000004 t=64415000
+[TB]  R done data=00000001 resp=0 t=64445000
+[TB] status=00000001 busy=1 done=0 err=0 t=64455000
+[TB] csr_read addr=00000004 t=64655000
+[TB]  R done data=00000001 resp=0 t=64685000
+[TB] status=00000001 busy=1 done=0 err=0 t=64695000
+[TB] csr_read addr=00000004 t=64895000
+[TB]  R done data=00000001 resp=0 t=64925000
+[TB] status=00000001 busy=1 done=0 err=0 t=64935000
+[TB] csr_read addr=00000004 t=65135000
+[TB]  R done data=00000001 resp=0 t=65165000
+[TB] status=00000001 busy=1 done=0 err=0 t=65175000
+[TB] csr_read addr=00000004 t=65375000
+[TB]  R done data=00000001 resp=0 t=65405000
+[TB] status=00000001 busy=1 done=0 err=0 t=65415000
+[TB] csr_read addr=00000004 t=65615000
+[TB]  R done data=00000001 resp=0 t=65645000
+[TB] status=00000001 busy=1 done=0 err=0 t=65655000
+[TB] csr_read addr=00000004 t=65855000
+[TB]  R done data=00000001 resp=0 t=65885000
+[TB] status=00000001 busy=1 done=0 err=0 t=65895000
+[TB] csr_read addr=00000004 t=66095000
+[TB]  R done data=00000001 resp=0 t=66125000
+[TB] status=00000001 busy=1 done=0 err=0 t=66135000
+[TB] csr_read addr=00000004 t=66335000
+[TB]  R done data=00000001 resp=0 t=66365000
+[TB] status=00000001 busy=1 done=0 err=0 t=66375000
+[TB] csr_read addr=00000004 t=66575000
+[TB]  R done data=00000001 resp=0 t=66605000
+[TB] status=00000001 busy=1 done=0 err=0 t=66615000
+[TB] csr_read addr=00000004 t=66815000
+[TB]  R done data=00000001 resp=0 t=66845000
+[TB] status=00000001 busy=1 done=0 err=0 t=66855000
+[TB] csr_read addr=00000004 t=67055000
+[TB]  R done data=00000001 resp=0 t=67085000
+[TB] status=00000001 busy=1 done=0 err=0 t=67095000
+[TB] csr_read addr=00000004 t=67295000
+[TB]  R done data=00000001 resp=0 t=67325000
+[TB] status=00000001 busy=1 done=0 err=0 t=67335000
+[TB] csr_read addr=00000004 t=67535000
+[TB]  R done data=00000001 resp=0 t=67565000
+[TB] status=00000001 busy=1 done=0 err=0 t=67575000
+[TB] csr_read addr=00000004 t=67775000
+[TB]  R done data=00000001 resp=0 t=67805000
+[TB] status=00000001 busy=1 done=0 err=0 t=67815000
+[TB] csr_read addr=00000004 t=68015000
+[TB]  R done data=00000001 resp=0 t=68045000
+[TB] status=00000001 busy=1 done=0 err=0 t=68055000
+[TB] csr_read addr=00000004 t=68255000
+[TB]  R done data=00000001 resp=0 t=68285000
+[TB] status=00000001 busy=1 done=0 err=0 t=68295000
+[TB] csr_read addr=00000004 t=68495000
+[TB]  R done data=00000001 resp=0 t=68525000
+[TB] status=00000001 busy=1 done=0 err=0 t=68535000
+[TB] csr_read addr=00000004 t=68735000
+[TB]  R done data=00000001 resp=0 t=68765000
+[TB] status=00000001 busy=1 done=0 err=0 t=68775000
+[TB] csr_read addr=00000004 t=68975000
+[TB]  R done data=00000001 resp=0 t=69005000
+[TB] status=00000001 busy=1 done=0 err=0 t=69015000
+[TB] csr_read addr=00000004 t=69215000
+[TB]  R done data=00000001 resp=0 t=69245000
+[TB] status=00000001 busy=1 done=0 err=0 t=69255000
+[TB] csr_read addr=00000004 t=69455000
+[TB]  R done data=00000001 resp=0 t=69485000
+[TB] status=00000001 busy=1 done=0 err=0 t=69495000
+[TB] csr_read addr=00000004 t=69695000
+[TB]  R done data=00000001 resp=0 t=69725000
+[TB] status=00000001 busy=1 done=0 err=0 t=69735000
+[TB] csr_read addr=00000004 t=69935000
+[TB]  R done data=00000001 resp=0 t=69965000
+[TB] status=00000001 busy=1 done=0 err=0 t=69975000
+[TB] csr_read addr=00000004 t=70175000
+[TB]  R done data=00000001 resp=0 t=70205000
+[TB] status=00000001 busy=1 done=0 err=0 t=70215000
+[TB] csr_read addr=00000004 t=70415000
+[TB]  R done data=00000001 resp=0 t=70445000
+[TB] status=00000001 busy=1 done=0 err=0 t=70455000
+[TB] csr_read addr=00000004 t=70655000
+[TB]  R done data=00000001 resp=0 t=70685000
+[TB] status=00000001 busy=1 done=0 err=0 t=70695000
+[TB] csr_read addr=00000004 t=70895000
+[TB]  R done data=00000001 resp=0 t=70925000
+[TB] status=00000001 busy=1 done=0 err=0 t=70935000
+[TB] csr_read addr=00000004 t=71135000
+[TB]  R done data=00000001 resp=0 t=71165000
+[TB] status=00000001 busy=1 done=0 err=0 t=71175000
+[TB] csr_read addr=00000004 t=71375000
+[TB]  R done data=00000001 resp=0 t=71405000
+[TB] status=00000001 busy=1 done=0 err=0 t=71415000
+[TB] csr_read addr=00000004 t=71615000
+[TB]  R done data=00000001 resp=0 t=71645000
+[TB] status=00000001 busy=1 done=0 err=0 t=71655000
+[TB] csr_read addr=00000004 t=71855000
+[TB]  R done data=00000001 resp=0 t=71885000
+[TB] status=00000001 busy=1 done=0 err=0 t=71895000
+[TB] csr_read addr=00000004 t=72095000
+[TB]  R done data=00000001 resp=0 t=72125000
+[TB] status=00000001 busy=1 done=0 err=0 t=72135000
+[TB] csr_read addr=00000004 t=72335000
+[TB]  R done data=00000001 resp=0 t=72365000
+[TB] status=00000001 busy=1 done=0 err=0 t=72375000
+[TB][FAIL] Timeout waiting DMA completion t=72575000
+FATAL: /home/vinicius.silva/axi_dma/tb/gls/tb_gls_generic.sv:492: 
+       Time: 72575000  Scope: dma_tb.dma_wait_done

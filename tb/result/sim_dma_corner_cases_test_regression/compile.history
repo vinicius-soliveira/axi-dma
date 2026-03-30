@@ -1,0 +1,2 @@
+#e1(22Mar2026:10:06:17): source ./xcelium.d/env.d/env.history.22Mar2026_10_06_17
+s1(22Mar2026:10:06:17):  xrun -64bit -sv -uvm -assert -coverage all -covoverwrite -covworkdir sim_dma_corner_cases_test_regression/cov_work -f filelist_eda.f -top tb_top -access +rwc -timescale 1ns/1ps -l sim_dma_corner_cases_test_regression/compile.log -elaborate 
