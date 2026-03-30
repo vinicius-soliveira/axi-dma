@@ -1,0 +1,16 @@
+/home/vinicius.silva/axi_dma/synth/netlist/dma_axi_top_netlist.v:6: warning: timescale for $paramod$009f3b7c956d56e1321a15cdc68bac150250ca09\dma_fsm inherited from another file.
+/home/vinicius.silva/axi_dma/tb/gls/tb_gls_generic.sv:1: ...: The inherited timescale is here.
+/home/vinicius.silva/axi_dma/synth/netlist/dma_axi_top_netlist.v:2740: warning: timescale for $paramod$47ec64fb5209bcfd12d6b2912fd6c2f990b84ee3\dma_fifo inherited from another file.
+/home/vinicius.silva/axi_dma/tb/gls/tb_gls_generic.sv:1: ...: The inherited timescale is here.
+/home/vinicius.silva/axi_dma/synth/netlist/dma_axi_top_netlist.v:7500: warning: timescale for $paramod$70bf19c0e5ac86e1fb69f77454d9b20d8e513e14\dma_csr inherited from another file.
+/home/vinicius.silva/axi_dma/tb/gls/tb_gls_generic.sv:1: ...: The inherited timescale is here.
+/home/vinicius.silva/axi_dma/synth/netlist/dma_axi_top_netlist.v:9284: warning: timescale for $paramod$c8bc0509aabc15b64a46d0e677e83bf79e882db8\dma_axi_master_rd inherited from another file.
+/home/vinicius.silva/axi_dma/tb/gls/tb_gls_generic.sv:1: ...: The inherited timescale is here.
+/home/vinicius.silva/axi_dma/synth/netlist/dma_axi_top_netlist.v:9639: warning: timescale for $paramod$c8bc0509aabc15b64a46d0e677e83bf79e882db8\dma_axi_master_wr inherited from another file.
+/home/vinicius.silva/axi_dma/tb/gls/tb_gls_generic.sv:1: ...: The inherited timescale is here.
+/home/vinicius.silva/axi_dma/synth/netlist/dma_axi_top_netlist.v:10196: warning: timescale for dma_axi_top inherited from another file.
+/home/vinicius.silva/axi_dma/tb/gls/tb_gls_generic.sv:1: ...: The inherited timescale is here.
+warning: Some design elements have no explicit time unit and/or
+       : time precision. This may cause confusing timing results.
+       : Affected design elements are:
+       :   -- package dma_pkg declared here: /home/vinicius.silva/axi_dma/rtl/dma_pkg.sv:3

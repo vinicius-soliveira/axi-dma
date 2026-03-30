@@ -1,0 +1,125 @@
+=======================================
+ Regression coverage report
+=======================================
+
+[Build instrumentation]
+=======================================
+ Build / instrumentation report
+=======================================
+
+[Coverage instrumentation]
+			FSM extracted for state register state
+			FSM extracted for state register state
+			FSM extracted for state register state
+	Enabling instrumentation for coverage types: block expression FSM toggle functional
+xmelab: *N,COVCGN: Coverage configuration file command "set_covergroup -new_instance_reporting" can be specified to improve the scoping and naming of covergroup instances. It may be noted that subsequent merging of a coverage database saved with this command and a coverage database saved without this command is not allowed.
+		Covergroup Instances:           0       1
+
+[Assertion instrumentation]
+		Assertions:                    58      58
+
+[Functional coverage events from logs]
+----- seed 1 -----
+UVM_INFO dma_cov_collector.sv(54) @ 585000: uvm_test_top.env.cov [COV] sampled coverage item: src=00100000 dst=00110000 len=4 max_beats=1 num_bursts=1 done=1 error=0 single=1
+UVM_INFO dma_scoreboard.sv(65) @ 585000: uvm_test_top.env.sb [SB] coverage publish: src=00100000 dst=00110000 len=4 max_beats=1 num_bursts=1 status=00000002 done=1 error=0
+UVM_INFO dma_scoreboard.sv(116) @ 585000: uvm_test_top.env.sb [SB] DMA copy check passed: src=00100000 dst=00110000 len=4 max_beats=1
+UVM_INFO dma_base_seq.sv(57) @ 595000: uvm_test_top.env.vsqr@@seq_min [DMADONE] DMA completed successfully src=00100000 dst=00110000 len=4 max_beats=1
+UVM_INFO dma_cov_collector.sv(54) @ 8135000: uvm_test_top.env.cov [COV] sampled coverage item: src=00120000 dst=00130000 len=256 max_beats=1 num_bursts=64 done=1 error=0 single=0
+UVM_INFO dma_scoreboard.sv(65) @ 8135000: uvm_test_top.env.sb [SB] coverage publish: src=00120000 dst=00130000 len=256 max_beats=1 num_bursts=64 status=00000002 done=1 error=0
+UVM_INFO dma_scoreboard.sv(116) @ 8135000: uvm_test_top.env.sb [SB] DMA copy check passed: src=00120000 dst=00130000 len=256 max_beats=1
+UVM_INFO dma_base_seq.sv(57) @ 8145000: uvm_test_top.env.vsqr@@seq_max_many [DMADONE] DMA completed successfully src=00120000 dst=00130000 len=256 max_beats=1
+UVM_INFO dma_cov_collector.sv(54) @ 10885000: uvm_test_top.env.cov [COV] sampled coverage item: src=00140000 dst=00150000 len=256 max_beats=16 num_bursts=4 done=1 error=0 single=0
+UVM_INFO dma_scoreboard.sv(65) @ 10885000: uvm_test_top.env.sb [SB] coverage publish: src=00140000 dst=00150000 len=256 max_beats=16 num_bursts=4 status=00000002 done=1 error=0
+UVM_INFO dma_scoreboard.sv(116) @ 10885000: uvm_test_top.env.sb [SB] DMA copy check passed: src=00140000 dst=00150000 len=256 max_beats=16
+UVM_INFO dma_base_seq.sv(57) @ 10895000: uvm_test_top.env.vsqr@@seq_max_burst16 [DMADONE] DMA completed successfully src=00140000 dst=00150000 len=256 max_beats=16
+UVM_INFO dma_cov_collector.sv(54) @ 12435000: uvm_test_top.env.cov [COV] sampled coverage item: src=00160000 dst=00170000 len=100 max_beats=8 num_bursts=4 done=1 error=0 single=0
+UVM_INFO dma_scoreboard.sv(65) @ 12435000: uvm_test_top.env.sb [SB] coverage publish: src=00160000 dst=00170000 len=100 max_beats=8 num_bursts=4 status=00000002 done=1 error=0
+UVM_INFO dma_scoreboard.sv(116) @ 12435000: uvm_test_top.env.sb [SB] DMA copy check passed: src=00160000 dst=00170000 len=100 max_beats=8
+UVM_INFO dma_base_seq.sv(57) @ 12445000: uvm_test_top.env.vsqr@@seq_partial_last [DMADONE] DMA completed successfully src=00160000 dst=00170000 len=100 max_beats=8
+[DMADONE]     4
+
+----- seed 2 -----
+UVM_INFO dma_cov_collector.sv(54) @ 585000: uvm_test_top.env.cov [COV] sampled coverage item: src=00100000 dst=00110000 len=4 max_beats=1 num_bursts=1 done=1 error=0 single=1
+UVM_INFO dma_scoreboard.sv(65) @ 585000: uvm_test_top.env.sb [SB] coverage publish: src=00100000 dst=00110000 len=4 max_beats=1 num_bursts=1 status=00000002 done=1 error=0
+UVM_INFO dma_scoreboard.sv(116) @ 585000: uvm_test_top.env.sb [SB] DMA copy check passed: src=00100000 dst=00110000 len=4 max_beats=1
+UVM_INFO dma_base_seq.sv(57) @ 595000: uvm_test_top.env.vsqr@@seq_min [DMADONE] DMA completed successfully src=00100000 dst=00110000 len=4 max_beats=1
+UVM_INFO dma_cov_collector.sv(54) @ 8135000: uvm_test_top.env.cov [COV] sampled coverage item: src=00120000 dst=00130000 len=256 max_beats=1 num_bursts=64 done=1 error=0 single=0
+UVM_INFO dma_scoreboard.sv(65) @ 8135000: uvm_test_top.env.sb [SB] coverage publish: src=00120000 dst=00130000 len=256 max_beats=1 num_bursts=64 status=00000002 done=1 error=0
+UVM_INFO dma_scoreboard.sv(116) @ 8135000: uvm_test_top.env.sb [SB] DMA copy check passed: src=00120000 dst=00130000 len=256 max_beats=1
+UVM_INFO dma_base_seq.sv(57) @ 8145000: uvm_test_top.env.vsqr@@seq_max_many [DMADONE] DMA completed successfully src=00120000 dst=00130000 len=256 max_beats=1
+UVM_INFO dma_cov_collector.sv(54) @ 10885000: uvm_test_top.env.cov [COV] sampled coverage item: src=00140000 dst=00150000 len=256 max_beats=16 num_bursts=4 done=1 error=0 single=0
+UVM_INFO dma_scoreboard.sv(65) @ 10885000: uvm_test_top.env.sb [SB] coverage publish: src=00140000 dst=00150000 len=256 max_beats=16 num_bursts=4 status=00000002 done=1 error=0
+UVM_INFO dma_scoreboard.sv(116) @ 10885000: uvm_test_top.env.sb [SB] DMA copy check passed: src=00140000 dst=00150000 len=256 max_beats=16
+UVM_INFO dma_base_seq.sv(57) @ 10895000: uvm_test_top.env.vsqr@@seq_max_burst16 [DMADONE] DMA completed successfully src=00140000 dst=00150000 len=256 max_beats=16
+UVM_INFO dma_cov_collector.sv(54) @ 12435000: uvm_test_top.env.cov [COV] sampled coverage item: src=00160000 dst=00170000 len=100 max_beats=8 num_bursts=4 done=1 error=0 single=0
+UVM_INFO dma_scoreboard.sv(65) @ 12435000: uvm_test_top.env.sb [SB] coverage publish: src=00160000 dst=00170000 len=100 max_beats=8 num_bursts=4 status=00000002 done=1 error=0
+UVM_INFO dma_scoreboard.sv(116) @ 12435000: uvm_test_top.env.sb [SB] DMA copy check passed: src=00160000 dst=00170000 len=100 max_beats=8
+UVM_INFO dma_base_seq.sv(57) @ 12445000: uvm_test_top.env.vsqr@@seq_partial_last [DMADONE] DMA completed successfully src=00160000 dst=00170000 len=100 max_beats=8
+[DMADONE]     4
+
+----- seed 3 -----
+UVM_INFO dma_cov_collector.sv(54) @ 585000: uvm_test_top.env.cov [COV] sampled coverage item: src=00100000 dst=00110000 len=4 max_beats=1 num_bursts=1 done=1 error=0 single=1
+UVM_INFO dma_scoreboard.sv(65) @ 585000: uvm_test_top.env.sb [SB] coverage publish: src=00100000 dst=00110000 len=4 max_beats=1 num_bursts=1 status=00000002 done=1 error=0
+UVM_INFO dma_scoreboard.sv(116) @ 585000: uvm_test_top.env.sb [SB] DMA copy check passed: src=00100000 dst=00110000 len=4 max_beats=1
+UVM_INFO dma_base_seq.sv(57) @ 595000: uvm_test_top.env.vsqr@@seq_min [DMADONE] DMA completed successfully src=00100000 dst=00110000 len=4 max_beats=1
+UVM_INFO dma_cov_collector.sv(54) @ 8135000: uvm_test_top.env.cov [COV] sampled coverage item: src=00120000 dst=00130000 len=256 max_beats=1 num_bursts=64 done=1 error=0 single=0
+UVM_INFO dma_scoreboard.sv(65) @ 8135000: uvm_test_top.env.sb [SB] coverage publish: src=00120000 dst=00130000 len=256 max_beats=1 num_bursts=64 status=00000002 done=1 error=0
+UVM_INFO dma_scoreboard.sv(116) @ 8135000: uvm_test_top.env.sb [SB] DMA copy check passed: src=00120000 dst=00130000 len=256 max_beats=1
+UVM_INFO dma_base_seq.sv(57) @ 8145000: uvm_test_top.env.vsqr@@seq_max_many [DMADONE] DMA completed successfully src=00120000 dst=00130000 len=256 max_beats=1
+UVM_INFO dma_cov_collector.sv(54) @ 10885000: uvm_test_top.env.cov [COV] sampled coverage item: src=00140000 dst=00150000 len=256 max_beats=16 num_bursts=4 done=1 error=0 single=0
+UVM_INFO dma_scoreboard.sv(65) @ 10885000: uvm_test_top.env.sb [SB] coverage publish: src=00140000 dst=00150000 len=256 max_beats=16 num_bursts=4 status=00000002 done=1 error=0
+UVM_INFO dma_scoreboard.sv(116) @ 10885000: uvm_test_top.env.sb [SB] DMA copy check passed: src=00140000 dst=00150000 len=256 max_beats=16
+UVM_INFO dma_base_seq.sv(57) @ 10895000: uvm_test_top.env.vsqr@@seq_max_burst16 [DMADONE] DMA completed successfully src=00140000 dst=00150000 len=256 max_beats=16
+UVM_INFO dma_cov_collector.sv(54) @ 12435000: uvm_test_top.env.cov [COV] sampled coverage item: src=00160000 dst=00170000 len=100 max_beats=8 num_bursts=4 done=1 error=0 single=0
+UVM_INFO dma_scoreboard.sv(65) @ 12435000: uvm_test_top.env.sb [SB] coverage publish: src=00160000 dst=00170000 len=100 max_beats=8 num_bursts=4 status=00000002 done=1 error=0
+UVM_INFO dma_scoreboard.sv(116) @ 12435000: uvm_test_top.env.sb [SB] DMA copy check passed: src=00160000 dst=00170000 len=100 max_beats=8
+UVM_INFO dma_base_seq.sv(57) @ 12445000: uvm_test_top.env.vsqr@@seq_partial_last [DMADONE] DMA completed successfully src=00160000 dst=00170000 len=100 max_beats=8
+[DMADONE]     4
+
+----- seed 4 -----
+UVM_INFO dma_cov_collector.sv(54) @ 585000: uvm_test_top.env.cov [COV] sampled coverage item: src=00100000 dst=00110000 len=4 max_beats=1 num_bursts=1 done=1 error=0 single=1
+UVM_INFO dma_scoreboard.sv(65) @ 585000: uvm_test_top.env.sb [SB] coverage publish: src=00100000 dst=00110000 len=4 max_beats=1 num_bursts=1 status=00000002 done=1 error=0
+UVM_INFO dma_scoreboard.sv(116) @ 585000: uvm_test_top.env.sb [SB] DMA copy check passed: src=00100000 dst=00110000 len=4 max_beats=1
+UVM_INFO dma_base_seq.sv(57) @ 595000: uvm_test_top.env.vsqr@@seq_min [DMADONE] DMA completed successfully src=00100000 dst=00110000 len=4 max_beats=1
+UVM_INFO dma_cov_collector.sv(54) @ 8135000: uvm_test_top.env.cov [COV] sampled coverage item: src=00120000 dst=00130000 len=256 max_beats=1 num_bursts=64 done=1 error=0 single=0
+UVM_INFO dma_scoreboard.sv(65) @ 8135000: uvm_test_top.env.sb [SB] coverage publish: src=00120000 dst=00130000 len=256 max_beats=1 num_bursts=64 status=00000002 done=1 error=0
+UVM_INFO dma_scoreboard.sv(116) @ 8135000: uvm_test_top.env.sb [SB] DMA copy check passed: src=00120000 dst=00130000 len=256 max_beats=1
+UVM_INFO dma_base_seq.sv(57) @ 8145000: uvm_test_top.env.vsqr@@seq_max_many [DMADONE] DMA completed successfully src=00120000 dst=00130000 len=256 max_beats=1
+UVM_INFO dma_cov_collector.sv(54) @ 10885000: uvm_test_top.env.cov [COV] sampled coverage item: src=00140000 dst=00150000 len=256 max_beats=16 num_bursts=4 done=1 error=0 single=0
+UVM_INFO dma_scoreboard.sv(65) @ 10885000: uvm_test_top.env.sb [SB] coverage publish: src=00140000 dst=00150000 len=256 max_beats=16 num_bursts=4 status=00000002 done=1 error=0
+UVM_INFO dma_scoreboard.sv(116) @ 10885000: uvm_test_top.env.sb [SB] DMA copy check passed: src=00140000 dst=00150000 len=256 max_beats=16
+UVM_INFO dma_base_seq.sv(57) @ 10895000: uvm_test_top.env.vsqr@@seq_max_burst16 [DMADONE] DMA completed successfully src=00140000 dst=00150000 len=256 max_beats=16
+UVM_INFO dma_cov_collector.sv(54) @ 12435000: uvm_test_top.env.cov [COV] sampled coverage item: src=00160000 dst=00170000 len=100 max_beats=8 num_bursts=4 done=1 error=0 single=0
+UVM_INFO dma_scoreboard.sv(65) @ 12435000: uvm_test_top.env.sb [SB] coverage publish: src=00160000 dst=00170000 len=100 max_beats=8 num_bursts=4 status=00000002 done=1 error=0
+UVM_INFO dma_scoreboard.sv(116) @ 12435000: uvm_test_top.env.sb [SB] DMA copy check passed: src=00160000 dst=00170000 len=100 max_beats=8
+UVM_INFO dma_base_seq.sv(57) @ 12445000: uvm_test_top.env.vsqr@@seq_partial_last [DMADONE] DMA completed successfully src=00160000 dst=00170000 len=100 max_beats=8
+[DMADONE]     4
+
+----- seed 5 -----
+UVM_INFO dma_cov_collector.sv(54) @ 585000: uvm_test_top.env.cov [COV] sampled coverage item: src=00100000 dst=00110000 len=4 max_beats=1 num_bursts=1 done=1 error=0 single=1
+UVM_INFO dma_scoreboard.sv(65) @ 585000: uvm_test_top.env.sb [SB] coverage publish: src=00100000 dst=00110000 len=4 max_beats=1 num_bursts=1 status=00000002 done=1 error=0
+UVM_INFO dma_scoreboard.sv(116) @ 585000: uvm_test_top.env.sb [SB] DMA copy check passed: src=00100000 dst=00110000 len=4 max_beats=1
+UVM_INFO dma_base_seq.sv(57) @ 595000: uvm_test_top.env.vsqr@@seq_min [DMADONE] DMA completed successfully src=00100000 dst=00110000 len=4 max_beats=1
+UVM_INFO dma_cov_collector.sv(54) @ 8135000: uvm_test_top.env.cov [COV] sampled coverage item: src=00120000 dst=00130000 len=256 max_beats=1 num_bursts=64 done=1 error=0 single=0
+UVM_INFO dma_scoreboard.sv(65) @ 8135000: uvm_test_top.env.sb [SB] coverage publish: src=00120000 dst=00130000 len=256 max_beats=1 num_bursts=64 status=00000002 done=1 error=0
+UVM_INFO dma_scoreboard.sv(116) @ 8135000: uvm_test_top.env.sb [SB] DMA copy check passed: src=00120000 dst=00130000 len=256 max_beats=1
+UVM_INFO dma_base_seq.sv(57) @ 8145000: uvm_test_top.env.vsqr@@seq_max_many [DMADONE] DMA completed successfully src=00120000 dst=00130000 len=256 max_beats=1
+UVM_INFO dma_cov_collector.sv(54) @ 10885000: uvm_test_top.env.cov [COV] sampled coverage item: src=00140000 dst=00150000 len=256 max_beats=16 num_bursts=4 done=1 error=0 single=0
+UVM_INFO dma_scoreboard.sv(65) @ 10885000: uvm_test_top.env.sb [SB] coverage publish: src=00140000 dst=00150000 len=256 max_beats=16 num_bursts=4 status=00000002 done=1 error=0
+UVM_INFO dma_scoreboard.sv(116) @ 10885000: uvm_test_top.env.sb [SB] DMA copy check passed: src=00140000 dst=00150000 len=256 max_beats=16
+UVM_INFO dma_base_seq.sv(57) @ 10895000: uvm_test_top.env.vsqr@@seq_max_burst16 [DMADONE] DMA completed successfully src=00140000 dst=00150000 len=256 max_beats=16
+UVM_INFO dma_cov_collector.sv(54) @ 12435000: uvm_test_top.env.cov [COV] sampled coverage item: src=00160000 dst=00170000 len=100 max_beats=8 num_bursts=4 done=1 error=0 single=0
+UVM_INFO dma_scoreboard.sv(65) @ 12435000: uvm_test_top.env.sb [SB] coverage publish: src=00160000 dst=00170000 len=100 max_beats=8 num_bursts=4 status=00000002 done=1 error=0
+UVM_INFO dma_scoreboard.sv(116) @ 12435000: uvm_test_top.env.sb [SB] DMA copy check passed: src=00160000 dst=00170000 len=100 max_beats=8
+UVM_INFO dma_base_seq.sv(57) @ 12445000: uvm_test_top.env.vsqr@@seq_partial_last [DMADONE] DMA completed successfully src=00160000 dst=00170000 len=100 max_beats=8
+[DMADONE]     4
+
+
+[Coverage database artifacts]
+sim_dma_corner_cases_test_regression/cov_work/scope/cov_dump/icc_6c7dc4e1_47955bf7.ucd
+sim_dma_corner_cases_test_regression/cov_work/scope/dma_corner_cases_test_seed_1/icc_6c7dc4e1_47955bf7.ucd
+sim_dma_corner_cases_test_regression/cov_work/scope/dma_corner_cases_test_seed_2/icc_6c7dc4e1_47955bf7.ucd
+sim_dma_corner_cases_test_regression/cov_work/scope/dma_corner_cases_test_seed_3/icc_6c7dc4e1_47955bf7.ucd
+sim_dma_corner_cases_test_regression/cov_work/scope/dma_corner_cases_test_seed_4/icc_6c7dc4e1_47955bf7.ucd
+sim_dma_corner_cases_test_regression/cov_work/scope/dma_corner_cases_test_seed_5/icc_6c7dc4e1_47955bf7.ucd
+sim_dma_corner_cases_test_regression/cov_work/scope/icc_6c7dc4e1_47955bf7.ucm

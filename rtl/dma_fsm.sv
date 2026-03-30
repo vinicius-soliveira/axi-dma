@@ -138,7 +138,7 @@ module dma_fsm #(
   assign len_ok   = (len_bytes != '0) &&
                     ((len_bytes % BYTES_PER_BEAT) == 0);
   assign align_ok = loc_aligned(src_addr) && loc_aligned(dst_addr);
-  assign fifo_ok  = fifo_empty && !fifo_full;
+  assign fifo_ok = !fifo_full;
   assign cfg_ok   = len_ok && align_ok && fifo_ok;
 
   // Pipeline threshold: FIFO has accumulated all beats for this burst.

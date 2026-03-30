@@ -4,5 +4,57 @@ License GPLv3: GNU GPL version 3 <http://gnu.org/licenses/gpl.html>
 This is free software, and you are free to change and redistribute it
 under certain conditions; type `show_copying' for details. 
 This program comes with ABSOLUTELY NO WARRANTY; for details type `show_warranty'.
-% % % invalid command name "exite"
-% 
+Startpoint: u_fsm/_1735_ (rising edge-triggered flip-flop clocked by ACLK)
+Endpoint: u_fsm/_1801_ (rising edge-triggered flip-flop clocked by ACLK)
+Path Group: ACLK
+Path Type: max
+
+    Delay      Time   Description
+-------------------------------------------------------------
+   0.0000    0.0000   clock ACLK (rise edge)
+   0.0000    0.0000   clock network delay (ideal)
+   0.0000    0.0000 ^ u_fsm/_1735_/CLK (sky130_fd_sc_hd__dfrtp_1)
+   0.3644    0.3644 v u_fsm/_1735_/Q (sky130_fd_sc_hd__dfrtp_1)
+   0.1699    0.5342 v u_fsm/_0974_/Y (sky130_fd_sc_hd__nand2b_1)
+   0.4120    0.9462 v u_fsm/_0975_/X (sky130_fd_sc_hd__maj3_1)
+   0.3982    1.3444 v u_fsm/_0977_/X (sky130_fd_sc_hd__maj3_1)
+   0.3921    1.7366 v u_fsm/_0978_/X (sky130_fd_sc_hd__maj3_1)
+   0.3865    2.1231 v u_fsm/_0980_/X (sky130_fd_sc_hd__maj3_1)
+   0.1870    2.3101 ^ u_fsm/_0982_/Y (sky130_fd_sc_hd__a21oi_1)
+   0.1536    2.4637 v u_fsm/_0985_/Y (sky130_fd_sc_hd__o21ai_0)
+   0.2009    2.6646 v u_fsm/_0987_/X (sky130_fd_sc_hd__a21o_1)
+   0.6431    3.3077 ^ u_fsm/_0990_/Y (sky130_fd_sc_hd__a2111oi_0)
+   0.5740    3.8817 v u_fsm/_0992_/X (sky130_fd_sc_hd__or4b_1)
+   0.3770    4.2587 ^ u_fsm/_0994_/Y (sky130_fd_sc_hd__nor4_1)
+   0.5471    4.8058 v u_fsm/_0996_/X (sky130_fd_sc_hd__or4b_1)
+   0.5104    5.3162 v u_fsm/_0998_/X (sky130_fd_sc_hd__or4_1)
+   0.4759    5.7921 v u_fsm/_1000_/X (sky130_fd_sc_hd__or4_1)
+   0.2578    6.0499 ^ u_fsm/_1003_/Y (sky130_fd_sc_hd__o31ai_1)
+   0.4397    6.4896 v u_fsm/_1057_/Y (sky130_fd_sc_hd__nand4b_1)
+   0.4976    6.9872 v u_fsm/_1063_/X (sky130_fd_sc_hd__mux2_1)
+   0.1492    7.1363 v u_fsm/_1065_/Y (sky130_fd_sc_hd__nand2b_1)
+   0.6021    7.7385 ^ u_fsm/_1072_/Y (sky130_fd_sc_hd__o41ai_1)
+   0.1972    7.9357 v u_fsm/_1411_/Y (sky130_fd_sc_hd__nor4_1)
+   0.1475    8.0832 ^ u_fsm/_1431_/Y (sky130_fd_sc_hd__nand4_1)
+   0.1296    8.2128 ^ u_fsm/_1432_/Y (sky130_fd_sc_hd__nor2b_1)
+   0.0762    8.2890 v u_fsm/_1433_/Y (sky130_fd_sc_hd__o22ai_1)
+   0.2055    8.4945 v u_fsm/_1434_/X (sky130_fd_sc_hd__a22o_1)
+   0.0000    8.4945 v u_fsm/_1801_/D (sky130_fd_sc_hd__dfrtp_1)
+             8.4945   data arrival time
+
+  10.0000   10.0000   clock ACLK (rise edge)
+   0.0000   10.0000   clock network delay (ideal)
+  -0.2000    9.8000   clock uncertainty
+   0.0000    9.8000   clock reconvergence pessimism
+             9.8000 ^ u_fsm/_1801_/CLK (sky130_fd_sc_hd__dfrtp_1)
+  -0.1313    9.6687   library setup time
+             9.6687   data required time
+-------------------------------------------------------------
+             9.6687   data required time
+            -8.4945   data arrival time
+-------------------------------------------------------------
+             1.1742   slack (MET)
+
+
+wns 0.00
+tns 0.00

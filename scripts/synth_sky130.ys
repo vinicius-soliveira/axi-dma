@@ -1,7 +1,7 @@
 # ============================================================
 # Yosys Synthesis Script - AXI DMA
 # Target Technology: SKY130 (sky130_fd_sc_hd)
-# Compatible with older Yosys (OpenLane container)
+# Compatible with older Yosys / OpenLane container
 # ============================================================
 
 # ------------------------------------------------------------
@@ -27,32 +27,32 @@ proc
 opt
 
 # ------------------------------------------------------------
-# 4. FSM extraction and optimization
+# 4. Extract and optimize FSM logic
 # ------------------------------------------------------------
 fsm
 opt
 
 # ------------------------------------------------------------
-# 5. Memory handling (FIFO, etc.)
+# 5. Handle memory structures
 # ------------------------------------------------------------
 memory
 opt
 
 # ------------------------------------------------------------
-# 6. Generic tech mapping (important for old Yosys)
+# 6. Generic technology mapping 
 # ------------------------------------------------------------
 techmap
 opt
 
 # ------------------------------------------------------------
-# 7. Map flip-flops to SKY130 standard cells
+# 7. Map sequential cells to SKY130 standard cells
 # ------------------------------------------------------------
-dfflibmap -liberty /home/vinicius.silva/.ciel/ciel/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+dfflibmap -liberty $SKY130_PDK_ROOT/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 
 # ------------------------------------------------------------
-# 8. Technology mapping using ABC + SKY130 Liberty
+# 8. Map combinational logic using ABC and SKY130 liberty
 # ------------------------------------------------------------
-abc -liberty /home/vinicius.silva/.ciel/ciel/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty $SKY130_PDK_ROOT/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 
 # ------------------------------------------------------------
 # 9. Final cleanup and optimization
@@ -61,9 +61,9 @@ clean
 opt
 
 # ------------------------------------------------------------
-# 10. Report design statistics (area / cells)
+# 10. Report mapped design statistics
 # ------------------------------------------------------------
-stat -liberty /home/vinicius.silva/.ciel/ciel/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+stat -liberty $SKY130_PDK_ROOT/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 
 # ------------------------------------------------------------
 # 11. Write final gate-level netlist

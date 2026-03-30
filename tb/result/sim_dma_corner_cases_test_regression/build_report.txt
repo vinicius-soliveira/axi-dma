@@ -1,0 +1,14 @@
+=======================================
+ Build / instrumentation report
+=======================================
+
+[Coverage instrumentation]
+			FSM extracted for state register state
+			FSM extracted for state register state
+			FSM extracted for state register state
+	Enabling instrumentation for coverage types: block expression FSM toggle functional
+xmelab: *N,COVCGN: Coverage configuration file command "set_covergroup -new_instance_reporting" can be specified to improve the scoping and naming of covergroup instances. It may be noted that subsequent merging of a coverage database saved with this command and a coverage database saved without this command is not allowed.
+		Covergroup Instances:           0       1
+
+[Assertion instrumentation]
+		Assertions:                    58      58

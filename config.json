@@ -1,0 +1,39 @@
+{
+  "DESIGN_NAME": "dma_axi_top",
+
+  "VERILOG_FILES": [
+    "dir::rtl/dma_pkg.sv",
+    "dir::rtl/dma_fifo.sv",
+    "dir::rtl/dma_csr.sv",
+    "dir::rtl/dma_fsm.sv",
+    "dir::rtl/dma_axi_master_rd.sv",
+    "dir::rtl/dma_axi_master_wr.sv",
+    "dir::rtl/dma_axi_top.sv"
+  ],
+
+  "VERILOG_INCLUDE_DIRS": [
+    "dir::rtl"
+  ],
+
+  "CLOCK_PORT": "ACLK",
+  "CLOCK_PERIOD": 10.0,
+
+  "PNR_SDC_FILE": "dir::synth/constraints/dma_axi_top.sdc",
+  "SIGNOFF_SDC_FILE": "dir::synth/constraints/dma_axi_top.sdc",
+
+  "SYNTH_STRATEGY": "AREA 0",
+  "SYNTH_MEMORY_MAX_BITS": 0,
+
+  "FP_CORE_UTIL": 35,
+  "FP_ASPECT_RATIO": 1.0,
+  "FP_PDN_CORE_RING": false,
+
+  "PL_TARGET_DENSITY": 0.50,
+
+  "RUN_CTS": true,
+  "RUN_ROUTING": true,
+
+  "QUIT_ON_TIMING_VIOLATIONS": false,
+  "QUIT_ON_MAGIC_DRC": false,
+  "QUIT_ON_LVS_ERROR": false
+}

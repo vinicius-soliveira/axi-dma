@@ -1,0 +1,8 @@
+=======================================
+ Seed report
+=======================================
+Test:        dma_corner_cases_test
+Seed:        3
+Verbosity:   UVM_LOW
+Run status:  0
+Log file:    sim_dma_corner_cases_test_regression/seed_3/run.log

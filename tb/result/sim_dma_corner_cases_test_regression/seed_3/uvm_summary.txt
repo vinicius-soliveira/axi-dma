@@ -1,0 +1,9 @@
+=======================================
+ UVM summary - seed 3
+=======================================
+Number of demoted UVM_ERROR reports  :    0
+Number of caught UVM_ERROR reports   :    0
+UVM_ERROR :    0
+Number of demoted UVM_FATAL reports  :    0
+Number of caught UVM_FATAL reports   :    0
+UVM_FATAL :    0

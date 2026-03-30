@@ -1,0 +1,74 @@
+=======================================
+ Coverage summary - seed 4
+=======================================
+
+[Functional coverage events]
+UVM_INFO dma_cov_collector.sv(54) @ 585000: uvm_test_top.env.cov [COV] sampled coverage item: src=00100000 dst=00110000 len=4 max_beats=1 num_bursts=1 done=1 error=0 single=1
+UVM_INFO dma_scoreboard.sv(65) @ 585000: uvm_test_top.env.sb [SB] coverage publish: src=00100000 dst=00110000 len=4 max_beats=1 num_bursts=1 status=00000002 done=1 error=0
+UVM_INFO dma_scoreboard.sv(116) @ 585000: uvm_test_top.env.sb [SB] DMA copy check passed: src=00100000 dst=00110000 len=4 max_beats=1
+UVM_INFO dma_base_seq.sv(57) @ 595000: uvm_test_top.env.vsqr@@seq_min [DMADONE] DMA completed successfully src=00100000 dst=00110000 len=4 max_beats=1
+UVM_INFO dma_cov_collector.sv(54) @ 8135000: uvm_test_top.env.cov [COV] sampled coverage item: src=00120000 dst=00130000 len=256 max_beats=1 num_bursts=64 done=1 error=0 single=0
+UVM_INFO dma_scoreboard.sv(65) @ 8135000: uvm_test_top.env.sb [SB] coverage publish: src=00120000 dst=00130000 len=256 max_beats=1 num_bursts=64 status=00000002 done=1 error=0
+UVM_INFO dma_scoreboard.sv(116) @ 8135000: uvm_test_top.env.sb [SB] DMA copy check passed: src=00120000 dst=00130000 len=256 max_beats=1
+UVM_INFO dma_base_seq.sv(57) @ 8145000: uvm_test_top.env.vsqr@@seq_max_many [DMADONE] DMA completed successfully src=00120000 dst=00130000 len=256 max_beats=1
+UVM_INFO dma_cov_collector.sv(54) @ 10885000: uvm_test_top.env.cov [COV] sampled coverage item: src=00140000 dst=00150000 len=256 max_beats=16 num_bursts=4 done=1 error=0 single=0
+UVM_INFO dma_scoreboard.sv(65) @ 10885000: uvm_test_top.env.sb [SB] coverage publish: src=00140000 dst=00150000 len=256 max_beats=16 num_bursts=4 status=00000002 done=1 error=0
+UVM_INFO dma_scoreboard.sv(116) @ 10885000: uvm_test_top.env.sb [SB] DMA copy check passed: src=00140000 dst=00150000 len=256 max_beats=16
+UVM_INFO dma_base_seq.sv(57) @ 10895000: uvm_test_top.env.vsqr@@seq_max_burst16 [DMADONE] DMA completed successfully src=00140000 dst=00150000 len=256 max_beats=16
+UVM_INFO dma_cov_collector.sv(54) @ 12435000: uvm_test_top.env.cov [COV] sampled coverage item: src=00160000 dst=00170000 len=100 max_beats=8 num_bursts=4 done=1 error=0 single=0
+UVM_INFO dma_scoreboard.sv(65) @ 12435000: uvm_test_top.env.sb [SB] coverage publish: src=00160000 dst=00170000 len=100 max_beats=8 num_bursts=4 status=00000002 done=1 error=0
+UVM_INFO dma_scoreboard.sv(116) @ 12435000: uvm_test_top.env.sb [SB] DMA copy check passed: src=00160000 dst=00170000 len=100 max_beats=8
+UVM_INFO dma_base_seq.sv(57) @ 12445000: uvm_test_top.env.vsqr@@seq_partial_last [DMADONE] DMA completed successfully src=00160000 dst=00170000 len=100 max_beats=8
+[DMADONE]     4
+
+[Coverage database lines]
+	-covworkdir sim_dma_corner_cases_test_regression/cov_work
+coverage setup:
+  workdir  :  sim_dma_corner_cases_test_regression/cov_work
+  testname :  cov_dump
+coverage files:
+  model(design data) :  sim_dma_corner_cases_test_regression/cov_work/scope/icc_6c7dc4e1_47955bf7.ucm (reused)
+  data               :  sim_dma_corner_cases_test_regression/cov_work/scope/cov_dump/icc_6c7dc4e1_47955bf7.ucd
+coverage setup:
+  workdir  :  sim_dma_corner_cases_test_regression/cov_work
+  testname :  dma_corner_cases_test_seed_4
+coverage files:
+  model(design data) :  sim_dma_corner_cases_test_regression/cov_work/scope/icc_6c7dc4e1_47955bf7.ucm (reused)
+  data               :  sim_dma_corner_cases_test_regression/cov_work/scope/dma_corner_cases_test_seed_4/icc_6c7dc4e1_47955bf7.ucd
+
+[Coverage-related warnings/info]
+	-coverage all
+	-covoverwrite
+	-covworkdir sim_dma_corner_cases_test_regression/cov_work
+	-covtest dma_corner_cases_test_seed_4
+UVM_INFO dma_cov_collector.sv(54) @ 585000: uvm_test_top.env.cov [COV] sampled coverage item: src=00100000 dst=00110000 len=4 max_beats=1 num_bursts=1 done=1 error=0 single=1
+UVM_INFO dma_scoreboard.sv(65) @ 585000: uvm_test_top.env.sb [SB] coverage publish: src=00100000 dst=00110000 len=4 max_beats=1 num_bursts=1 status=00000002 done=1 error=0
+UVM_INFO dma_cov_collector.sv(54) @ 8135000: uvm_test_top.env.cov [COV] sampled coverage item: src=00120000 dst=00130000 len=256 max_beats=1 num_bursts=64 done=1 error=0 single=0
+UVM_INFO dma_scoreboard.sv(65) @ 8135000: uvm_test_top.env.sb [SB] coverage publish: src=00120000 dst=00130000 len=256 max_beats=1 num_bursts=64 status=00000002 done=1 error=0
+UVM_INFO dma_cov_collector.sv(54) @ 10885000: uvm_test_top.env.cov [COV] sampled coverage item: src=00140000 dst=00150000 len=256 max_beats=16 num_bursts=4 done=1 error=0 single=0
+UVM_INFO dma_scoreboard.sv(65) @ 10885000: uvm_test_top.env.sb [SB] coverage publish: src=00140000 dst=00150000 len=256 max_beats=16 num_bursts=4 status=00000002 done=1 error=0
+UVM_INFO dma_cov_collector.sv(54) @ 12435000: uvm_test_top.env.cov [COV] sampled coverage item: src=00160000 dst=00170000 len=100 max_beats=8 num_bursts=4 done=1 error=0 single=0
+UVM_INFO dma_scoreboard.sv(65) @ 12435000: uvm_test_top.env.sb [SB] coverage publish: src=00160000 dst=00170000 len=100 max_beats=8 num_bursts=4 status=00000002 done=1 error=0
+         1      1      0   tb_top.dut.u_axil_sva.__cover1
+         1      1      0   tb_top.dut.u_axil_sva.__cover2
+         1      1      0   tb_top.dut.u_axil_sva.__cover3
+         1      1      0   tb_top.dut.u_axil_sva.__cover4
+         1      1      0   tb_top.dut.u_axil_sva.__cover5
+         1      1      0   tb_top.dut.u_dma_axi_read_sva.__cover1
+         1      1      0   tb_top.dut.u_dma_axi_read_sva.__cover2
+         1      1      0   tb_top.dut.u_dma_axi_read_sva.__cover3
+         1      1      0   tb_top.dut.u_dma_axi_read_sva.__cover4
+         1      1      0   tb_top.dut.u_dma_axi_write_sva.__cover1
+         1      1      0   tb_top.dut.u_dma_axi_write_sva.__cover2
+         1      1      0   tb_top.dut.u_dma_axi_write_sva.__cover3
+         1      1      0   tb_top.dut.u_dma_axi_write_sva.__cover4
+         1      1      0   tb_top.dut.u_dma_axi_write_sva.__cover5
+         1      1      0   tb_top.dut.u_dma_ctrl_sva.__cover1
+         1      0      0   tb_top.dut.u_dma_ctrl_sva.__cover2
+xcelium> coverage -dump cov_dump
+xmsim: *N,COVCGN: Coverage configuration file command "set_covergroup -new_instance_reporting" can be specified to improve the scoping and naming of covergroup instances. It may be noted that subsequent merging of a coverage database saved with this command and a coverage database saved without this command is not allowed.
+xmsim: *W,CGDEFN: Default name "worklib.uvm_pkg::.dma_cg" will be generated for covergroup instance "dma_cg" as the name of the covergroup instance is not specified explicitly: ./dma_cov_collector.sv, 7.
+coverage setup:
+coverage files:
+coverage setup:
+coverage files:

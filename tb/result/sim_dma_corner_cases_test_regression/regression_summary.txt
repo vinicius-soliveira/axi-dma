@@ -1,0 +1,16 @@
+=======================================
+Regression summary
+=======================================
+Test:         dma_corner_cases_test
+Seeds run:    5
+Passed:       5
+Failed:       0
+Failed seeds: none
+
+Assertions:
+  Total (sum):        290
+  Failing (sum):      0
+  Unchecked (sum):    110
+
+Coverage dir: sim_dma_corner_cases_test_regression/cov_work
+=======================================
