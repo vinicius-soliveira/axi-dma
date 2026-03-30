@@ -19,3 +19,5 @@ read_sdc synth/constraints/dma_axi_top.sdc
 report_checks -path_delay max -digits 4  > synth/reports/timing_checks.rpt
 report_wns > synth/reports/wns.rpt
 report_tns > synth/reports/tns.rpt
+
+exit
