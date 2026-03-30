@@ -1,29 +1,40 @@
 # AXI DMA Controller
 
-## Overview
-
-This repository implements a simplified AXI-based Memory-to-Memory (MM2MM) DMA controller in SystemVerilog.
-
-The design performs burst-based data transfers between memory-mapped regions using AXI4 master interfaces and is intended for:
-
-- architectural exploration  
-- front-end ASIC design practice  
-- verification methodology development  
-
-The project includes RTL, verification environment, synthesis flow, timing analysis, and gate-level simulation.
+> Simplified AXI-based Memory-to-Memory (MM2MM) DMA controller in SystemVerilog  
+> Focused on ASIC front-end design, verification, and synthesis flow
 
 ---
 
-## Scope
+## Overview
+
+This project implements a burst-based DMA controller capable of transferring data between memory-mapped regions using AXI4 master interfaces.
+
+It is designed for:
+
+- Architectural exploration  
+- Front-end ASIC design practice  
+- Verification methodology development  
+
+The repository includes:
+
+- RTL design  
+- UVM verification environment  
+- Synthesis (Yosys + Sky130)  
+- Static timing analysis (OpenSTA)  
+- Gate-level simulation (GLS)  
+
+---
+
+## Features
 
 ### Supported
 
-- Memory-to-Memory transfers (MM2MM)  
+- MM2MM transfers  
 - Single descriptor  
 - Single outstanding transaction  
 - Incrementing bursts (INCR)  
 - Configurable burst length  
-- AXI-Lite control interface (CSR)  
+- AXI-Lite CSR interface  
 
 ### Not Supported
 
@@ -37,64 +48,69 @@ The project includes RTL, verification environment, synthesis flow, timing analy
 
 ## Architecture
 
-Main modules:
+### Main Modules
 
-- dma_axi_top — top-level integration  
-- dma_fsm — control state machine  
-- dma_axi_master_rd — AXI read engine  
-- dma_axi_master_wr — AXI write engine  
-- dma_fifo — read/write decoupling  
-- dma_csr — configuration and status registers  
-- dma_pkg — shared definitions  
+| Module | Description |
+|------|------------|
+| `dma_axi_top` | Top-level integration |
+| `dma_fsm` | Control state machine |
+| `dma_axi_master_rd` | AXI read engine |
+| `dma_axi_master_wr` | AXI write engine |
+| `dma_fifo` | Read/write decoupling |
+| `dma_csr` | Configuration and status registers |
+| `dma_pkg` | Shared definitions |
 
-### Data Flow
-
-1. CPU configures DMA via AXI-Lite  
-2. FSM starts transfer  
-3. Read engine fetches data from source  
-4. FIFO buffers data  
-5. Write engine sends data to destination  
-6. FSM signals completion  
+---
 
 ---
 
 ## Project Structure
 
+```text
 axi_dma/
-├── rtl/
-├── tb/
-├── scripts/
-├── synth/
-├── gls/
-├── sim/
+├── rtl/        # RTL design
+├── tb/         # Testbenches (UVM + directed)
+├── scripts/    # Simulation and synthesis scripts
+├── synth/      # Netlists, reports, STA
+├── gls/        # Gate-level simulation
+├── sim/        # Simulation outputs
 └── Makefile
+```
 
 ---
 
 ## Getting Started
 
-### Run UVM tests
+### Run UVM Tests
 
-make smoke  
-make random  
-make regress  
+```bash
+make smoke
+make random
+make regress
+```
 
-### Run directed testbench
+### Run Directed Testbench
 
-make directed  
+```bash
+make directed
+```
 
-### Manual execution
+### Manual Execution
 
-./scripts/run.sh dma_random_test "1 2 3 4 5" UVM_LOW  
+```bash
+./scripts/run.sh dma_random_test "1 2 3 4 5" UVM_LOW
+```
 
 ---
 
 ## Simulation Outputs
 
+```text
 sim/
 ├── regression/
 ├── coverage/
 └── logs/
+```
 
 ---
 
@@ -103,56 +119,71 @@ sim/
 - UVM testbench  
 - Directed tests  
 - Functional coverage  
-- SystemVerilog Assertions  
+- SystemVerilog Assertions (SVA)  
 - Regression flow  
 
 ---
 
 ## Synthesis Flow
 
-### Yosys
+### Yosys + Sky130
 
-make synth-sky130  
+```bash
+make synth-sky130
+```
 
 ---
 
 ## Static Timing Analysis
 
-make sta  
+```bash
+make sta
+```
 
 ---
 
 ## Gate-Level Simulation
 
-make gls-generic  
-make gls-sky130  
+```bash
+make gls-generic
+make gls-sky130
+```
 
 ---
 
-## Cadence Genus Flow
+## Cadence Genus Flow (Optional)
 
-make genus  
+```bash
+make genus
+```
 
 ---
 
 ## Build System
 
-make help  
+```bash
+make help
+```
 
 ---
 
 ## Known Limitations
 
 - Single-channel DMA  
+- No support for multiple outstanding transactions  
+- FIFO implemented using flip-flops  
 
 ---
 
 ## Future Work
 
-- Extend features and verification  
+- Multi-channel support  
+- Scatter-gather DMA  
+- AXI performance optimizations  
+- Memory macro integration for FIFO  
 
 ---
 
 ## Author
 
-Vinícius Oliveira
+**Vinícius Oliveira**
