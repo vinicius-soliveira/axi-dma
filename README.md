@@ -2,9 +2,15 @@
 
 ## Overview
 
-This repository implements a simplified **AXI-based Memory-to-Memory (MM2MM) DMA controller** in SystemVerilog.
+This repository implements a simplified AXI-based Memory-to-Memory (MM2MM) DMA controller in SystemVerilog.
 
-The design supports burst-based transfers between memory-mapped regions using AXI4 master interfaces and is intended for **learning and architectural exploration**.
+The design performs burst-based data transfers between memory-mapped regions using AXI4 master interfaces and is intended for:
+
+- architectural exploration  
+- front-end ASIC design practice  
+- verification methodology development  
+
+The project includes RTL, verification environment, synthesis flow, timing analysis, and gate-level simulation.
 
 ---
 
@@ -12,20 +18,20 @@ The design supports burst-based transfers between memory-mapped regions using AX
 
 ### Supported
 
-- Memory-to-Memory transfers (MM2MM)
-- Single descriptor
-- Single outstanding transaction
-- Incrementing bursts (INCR)
-- Configurable burst length
-- AXI-Lite control interface (CSR)
+- Memory-to-Memory transfers (MM2MM)  
+- Single descriptor  
+- Single outstanding transaction  
+- Incrementing bursts (INCR)  
+- Configurable burst length  
+- AXI-Lite control interface (CSR)  
 
 ### Not Supported
 
-- Scatter-gather
-- Multi-channel DMA
-- AXI-Stream
-- Out-of-order execution
-- Unaligned transfers
+- Scatter-gather  
+- Multi-channel DMA  
+- AXI-Stream  
+- Out-of-order execution  
+- Unaligned transfers  
 
 ---
 
@@ -33,128 +39,120 @@ The design supports burst-based transfers between memory-mapped regions using AX
 
 Main modules:
 
-- `dma_axi_top` — top-level integration
-- `dma_fsm` — control state machine
-- `dma_axi_master_rd` — AXI read engine
-- `dma_axi_master_wr` — AXI write engine
-- `dma_fifo` — read/write decoupling
-- `dma_csr` — configuration and status
-- `dma_pkg` — shared definitions
+- dma_axi_top — top-level integration  
+- dma_fsm — control state machine  
+- dma_axi_master_rd — AXI read engine  
+- dma_axi_master_wr — AXI write engine  
+- dma_fifo — read/write decoupling  
+- dma_csr — configuration and status registers  
+- dma_pkg — shared definitions  
+
+### Data Flow
+
+1. CPU configures DMA via AXI-Lite  
+2. FSM starts transfer  
+3. Read engine fetches data from source  
+4. FIFO buffers data  
+5. Write engine sends data to destination  
+6. FSM signals completion  
+
+---
+
+## Project Structure
+
+axi_dma/
+├── rtl/
+├── tb/
+├── scripts/
+├── synth/
+├── gls/
+├── sim/
+└── Makefile
 
 ---
 
 ## Getting Started
 
-### Run UVM tests (recommended)
+### Run UVM tests
 
-```bash
-make smoke
-make random
-make regress
-```
+make smoke  
+make random  
+make regress  
 
 ### Run directed testbench
 
-```bash
-make directed
-```
+make directed  
 
 ### Manual execution
 
-```bash
-./scripts/run.sh dma_random_test "1 2 3 4 5" UVM_LOW
-```
+./scripts/run.sh dma_random_test "1 2 3 4 5" UVM_LOW  
 
 ---
 
 ## Simulation Outputs
 
-All simulation artifacts are stored under:
-
-```
 sim/
 ├── regression/
 ├── coverage/
 └── logs/
-```
-
-### Logs
-
-```
-sim/logs/<test>/seed_X/run.log
-```
-
-### Coverage database
-
-```
-sim/coverage/<test>/*.ucd
-```
-
-### Reports
-
-```
-sim/regression/<test>/
-├── regression_summary.txt
-├── coverage_report.txt
-└── assertions_report.txt
-```
 
 ---
 
 ## Verification
 
-The verification environment includes:
-
-- UVM-based testbench
-- Directed testbench
-- Functional coverage
-- Assertions (SVA)
-- Regression infrastructure
-
-See `tb/README.md` for details.
+- UVM testbench  
+- Directed tests  
+- Functional coverage  
+- SystemVerilog Assertions  
+- Regression flow  
 
 ---
 
-## Synthesis
+## Synthesis Flow
 
-The design can be synthesized using **Yosys** for RTL validation and early area/timing estimation.
+### Yosys
 
-### Requirements
+make synth-sky130  
 
-- Yosys (latest recommended)
-- ABC (usually bundled with Yosys)
+---
 
-### Running synthesis
+## Static Timing Analysis
 
-```bash
-yosys -s scripts/synth.ys
-```
+make sta  
 
-### Synthesis flow
+---
 
-The synthesis script performs:
+## Gate-Level Simulation
 
-- RTL elaboration
-- SystemVerilog to generic netlist lowering
-- Technology mapping using ABC
-- Optimization passes
-- Optional reporting (area/cell usage)
+make gls-generic  
+make gls-sky130  
 
-### Inputs
+---
 
-- RTL sources under `rtl/`
-- Synthesis script: `scripts/synth.ys`
+## Cadence Genus Flow
 
-### Outputs
+make genus  
 
-```
-synth/
-├── netlist.v
-├── reports/
-└── logs/
-```
+---
+
+## Build System
+
+make help  
+
+---
+
+## Known Limitations
+
+- Single-channel DMA  
+
+---
+
+## Future Work
+
+- Extend features and verification  
+
+---
 
 ## Author
 
 Vinícius Oliveira
-Electronic Engineer | Hardware & Firmware Development
